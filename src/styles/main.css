@@ -1,45 +1,130 @@
 @tailwind components;
 
 @layer components {
+    /* MD3 Card with elevation */
     .card-base {
-        @apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)] transition;
+        @apply rounded-[var(--radius-medium)] overflow-hidden bg-[var(--card-bg)] transition;
     }
+    .card-elevated {
+        @apply rounded-[var(--radius-medium)] overflow-hidden bg-[var(--card-bg)] shadow-[var(--elevation-1)] transition;
+    }
+
+    /* Elevation utilities */
+    .elevation-1 { box-shadow: var(--elevation-1); }
+    .elevation-2 { box-shadow: var(--elevation-2); }
+    .elevation-3 { box-shadow: var(--elevation-3); }
+    .elevation-4 { box-shadow: var(--elevation-4); }
+    .elevation-5 { box-shadow: var(--elevation-5); }
+
+    /* MD3 standard transitions */
     h1, h2, h3, h4, h5, h6, p, a, span, li, ul, ol, blockquote, code, pre, table, th, td, strong {
         @apply transition;
+        transition-duration: 150ms;
+        transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
     }
-    .card-shadow {
-        @apply drop-shadow-[0_2px_4px_rgba(0,0,0,0.005)]
+
+    /* MD3 Ripple effect */
+    .ripple {
+        position: relative;
+        overflow: hidden;
     }
+    .ripple::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        background-image: radial-gradient(circle, oklch(0.50 0.05 var(--hue)) 1px, transparent 1px);
+        background-size: 0 0;
+        background-repeat: no-repeat;
+        opacity: 0;
+        transition: opacity 200ms, background-size 300ms;
+    }
+    .ripple:active::after {
+        background-size: 400% 400%;
+        opacity: 0.15;
+        transition: opacity 0s;
+    }
+
+    /* Expand animation (MD3 state layer) */
     .expand-animation {
         @apply relative before:ease-out before:transition active:bg-none hover:before:bg-[var(--btn-plain-bg-hover)] active:before:bg-[var(--btn-plain-bg-active)] z-0
         before:absolute before:rounded-[inherit] before:inset-0 before:scale-[0.85] hover:before:scale-100 before:-z-10
     }
+
     .link {
-        @apply transition rounded-md p-1 -m-1 expand-animation;
+        @apply transition rounded-[var(--radius-extra-small)] p-1 -m-1 expand-animation;
     }
     .link-lg {
-        @apply transition rounded-md p-1.5 -m-1.5 expand-animation;
+        @apply transition rounded-[var(--radius-small)] p-1.5 -m-1.5 expand-animation;
     }
+
     .float-panel {
-        @apply top-[5.25rem] rounded-[var(--radius-large)] overflow-hidden bg-[var(--float-panel-bg)] transition shadow-xl dark:shadow-none
+        @apply top-[5.25rem] rounded-[var(--radius-large)] overflow-hidden bg-[var(--float-panel-bg)] transition shadow-[var(--elevation-3)] dark:shadow-none
     }
+
     .float-panel-closed {
         @apply -translate-y-1 opacity-0 pointer-events-none
     }
+
     .search-panel mark {
         @apply bg-transparent text-[var(--primary)]
     }
 
+    /* MD3 Button Variants */
+
+    /* Filled button */
+    .btn-filled {
+        @apply transition flex items-center justify-center gap-2 rounded-[var(--radius-full)] px-6 py-2.5 text-sm font-medium
+        bg-[var(--primary)] text-[var(--on-primary)]
+        hover:brightness-[1.08] active:brightness-[0.96]
+        disabled:opacity-[0.38]
+    }
+
+    /* Filled tonal button */
+    .btn-tonal {
+        @apply transition flex items-center justify-center gap-2 rounded-[var(--radius-full)] px-6 py-2.5 text-sm font-medium
+        bg-[var(--btn-tonal-bg)] text-[var(--btn-tonal-content)]
+        hover:bg-[var(--btn-tonal-bg-hover)] active:bg-[var(--btn-tonal-bg-active)]
+        disabled:opacity-[0.38]
+    }
+
+    /* Outlined button */
+    .btn-outlined {
+        @apply transition flex items-center justify-center gap-2 rounded-[var(--radius-full)] px-6 py-2.5 text-sm font-medium
+        border border-[var(--btn-outlined-border)] text-[var(--primary)]
+        hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]
+        disabled:opacity-[0.38] disabled:border-opacity-[0.38]
+    }
+
+    /* Text button */
+    .btn-text {
+        @apply transition flex items-center justify-center gap-2 rounded-[var(--radius-full)] px-6 py-2.5 text-sm font-medium
+        text-[var(--primary)]
+        hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]
+        disabled:opacity-[0.38]
+    }
+
+    /* Icon button */
+    .btn-icon {
+        @apply transition flex items-center justify-center rounded-[var(--radius-full)] w-10 h-10
+        text-[var(--on-surface-variant)]
+        hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]
+    }
+
     .btn-card {
-        @apply transition flex items-center justify-center bg-[var(--card-bg)] hover:bg-[var(--btn-card-bg-hover)]
-        active:bg-[var(--btn-card-bg-active)]
+        @apply transition flex items-center justify-center rounded-[var(--radius-medium)] bg-[var(--card-bg)] hover:bg-[var(--btn-card-bg-hover)]
+        active:bg-[var(--btn-card-bg-active)] elevation-1 hover:elevation-2
     }
     .btn-card.disabled {
         @apply pointer-events-none text-black/10 dark:text-white/10
     }
+
     .btn-plain {
-        @apply transition relative flex items-center justify-center bg-none
-        text-black/75 hover:text-[var(--primary)] dark:text-white/75 dark:hover:text-[var(--primary)];
+        @apply transition relative flex items-center justify-center rounded-[var(--radius-small)] bg-none
+        text-[var(--on-surface-variant)] hover:text-[var(--primary)] dark:text-white/75 dark:hover:text-[var(--primary)];
         &:not(.scale-animation) {
             @apply hover:bg-[var(--btn-plain-bg-hover)] active:bg-[var(--btn-plain-bg-active)]
         }
@@ -50,8 +135,9 @@
             }
         }
     }
+
     .btn-regular {
-        @apply transition flex items-center justify-center bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)]
+        @apply transition flex items-center justify-center rounded-[var(--radius-medium)] bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)]
         text-[var(--btn-content)] dark:text-white/75
     }
 
@@ -94,7 +180,7 @@
     }
 
     .meta-icon {
-        @apply w-8 h-8 transition rounded-md flex items-center justify-center bg-[var(--btn-regular-bg)]
+        @apply w-8 h-8 transition rounded-[var(--radius-small)] flex items-center justify-center bg-[var(--btn-regular-bg)]
         text-[var(--btn-content)] mr-2
     }
     .with-divider {
@@ -103,7 +189,7 @@
     }
 
     .btn-regular-dark {
-        @apply flex items-center justify-center
+        @apply flex items-center justify-center rounded-[var(--radius-medium)]
         bg-[oklch(0.45_0.01_var(--hue))] hover:bg-[oklch(0.50_0.01_var(--hue))] active:bg-[oklch(0.55_0.01_var(--hue))]
         dark:bg-[oklch(0.30_0.02_var(--hue))] dark:hover:bg-[oklch(0.35_0.03_var(--hue))] dark:active:bg-[oklch(0.40_0.03_var(--hue))]
     }
@@ -141,7 +227,7 @@
 }
 
 .custom-md spoiler {
-  @apply bg-[var(--codeblock-bg)] hover:bg-transparent px-1 py-0.5 overflow-hidden rounded-md transition-all duration-150;
+  @apply bg-[var(--codeblock-bg)] hover:bg-transparent px-1 py-0.5 overflow-hidden rounded-[var(--radius-small)] transition-all duration-150;
 
   &:not(:hover) {
     color: var(--codeblock-bg);
