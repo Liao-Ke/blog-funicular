@@ -1,12 +1,63 @@
 @tailwind components;
 
+html {
+    color: var(--on-surface);
+    background-color: var(--page-bg);
+}
+
+body {
+    position: relative;
+    isolation: isolate;
+    color: var(--on-surface);
+    background:
+        linear-gradient(90deg, color-mix(in oklch, var(--primary) 8%, transparent) 1px, transparent 1px),
+        linear-gradient(180deg, color-mix(in oklch, var(--accent-cyan) 6%, transparent) 1px, transparent 1px),
+        linear-gradient(135deg, color-mix(in oklch, var(--page-bg) 92%, white), var(--page-bg));
+    background-size: 44px 44px, 44px 44px, 100% 100%;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle at 1px 1px, color-mix(in oklch, var(--on-surface) 16%, transparent) 1px, transparent 0),
+        linear-gradient(115deg, transparent 0 42%, color-mix(in oklch, var(--accent-warm) 12%, transparent) 42% 43%, transparent 43% 100%);
+    background-size: 18px 18px, 100% 100%;
+    opacity: 0.28;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: theme("fontFamily.display");
+    letter-spacing: 0;
+}
+
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 1ms !important;
+    }
+}
+
 @layer components {
-    /* MD3 Card with elevation */
+    /* 编辑纸卡：用边框和轻阴影形成层次，避免重玻璃效果 */
     .card-base {
         @apply rounded-[var(--radius-medium)] overflow-hidden bg-[var(--card-bg)] transition;
+        border: 1px solid var(--card-border);
+        box-shadow: var(--card-shadow);
     }
     .card-elevated {
         @apply rounded-[var(--radius-medium)] overflow-hidden bg-[var(--card-bg)] shadow-[var(--elevation-1)] transition;
+        border: 1px solid var(--card-border);
     }
 
     /* Elevation utilities */
@@ -62,7 +113,8 @@
     }
 
     .float-panel {
-        @apply top-[5.25rem] rounded-[var(--radius-large)] overflow-hidden bg-[var(--float-panel-bg)] transition shadow-[var(--elevation-3)] dark:shadow-none
+        @apply top-[5.25rem] rounded-[var(--radius-large)] overflow-hidden bg-[var(--float-panel-bg)] transition shadow-[var(--elevation-3)];
+        border: 1px solid var(--card-border);
     }
 
     .float-panel-closed {
@@ -81,6 +133,7 @@
         bg-[var(--primary)] text-[var(--on-primary)]
         hover:brightness-[1.08] active:brightness-[0.96]
         disabled:opacity-[0.38]
+        shadow-[var(--elevation-1)]
     }
 
     /* Filled tonal button */
@@ -116,7 +169,8 @@
 
     .btn-card {
         @apply transition flex items-center justify-center rounded-[var(--radius-medium)] bg-[var(--card-bg)] hover:bg-[var(--btn-card-bg-hover)]
-        active:bg-[var(--btn-card-bg-active)] elevation-1 hover:elevation-2
+        active:bg-[var(--btn-card-bg-active)] elevation-1 hover:elevation-2;
+        border: 1px solid var(--card-border);
     }
     .btn-card.disabled {
         @apply pointer-events-none text-black/10 dark:text-white/10
@@ -138,7 +192,8 @@
 
     .btn-regular {
         @apply transition flex items-center justify-center rounded-[var(--radius-medium)] bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)]
-        text-[var(--btn-content)] dark:text-white/75
+        text-[var(--btn-content)];
+        border: 1px solid color-mix(in oklch, var(--primary) 18%, transparent);
     }
 
     .link-underline {
@@ -164,19 +219,19 @@
     }
 
     .text-90 {
-        @apply text-black/90 dark:text-white/90
+        color: var(--on-surface);
     }
     .text-75 {
-        @apply text-black/75 dark:text-white/75
+        color: var(--on-surface-variant);
     }
     .text-50 {
-        @apply text-black/50 dark:text-white/50
+        color: color-mix(in oklch, var(--on-surface) 58%, transparent);
     }
     .text-30 {
-        @apply text-black/30 dark:text-white/30
+        color: color-mix(in oklch, var(--on-surface) 40%, transparent);
     }
     .text-25 {
-        @apply text-black/25 dark:text-white/25
+        color: color-mix(in oklch, var(--on-surface) 32%, transparent);
     }
 
     .meta-icon {
@@ -190,8 +245,8 @@
 
     .btn-regular-dark {
         @apply flex items-center justify-center rounded-[var(--radius-medium)]
-        bg-[oklch(0.45_0.01_var(--hue))] hover:bg-[oklch(0.50_0.01_var(--hue))] active:bg-[oklch(0.55_0.01_var(--hue))]
-        dark:bg-[oklch(0.30_0.02_var(--hue))] dark:hover:bg-[oklch(0.35_0.03_var(--hue))] dark:active:bg-[oklch(0.40_0.03_var(--hue))]
+        bg-[oklch(0.36_0.03_305)] hover:bg-[oklch(0.42_0.04_305)] active:bg-[oklch(0.48_0.05_305)]
+        dark:bg-[oklch(0.30_0.04_305)] dark:hover:bg-[oklch(0.36_0.05_305)] dark:active:bg-[oklch(0.42_0.06_305)]
     }
     .btn-regular-dark.success {
         @apply bg-[oklch(0.75_0.14_var(--hue))] dark:bg-[oklch(0.75_0.14_var(--hue))]

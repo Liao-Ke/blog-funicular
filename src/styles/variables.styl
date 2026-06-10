@@ -8,23 +8,24 @@ black(a)
 rainbow-light = linear-gradient(to right, oklch(0.80 0.10 0), oklch(0.80 0.10 30), oklch(0.80 0.10 60), oklch(0.80 0.10 90), oklch(0.80 0.10 120), oklch(0.80 0.10 150), oklch(0.80 0.10 180), oklch(0.80 0.10 210), oklch(0.80 0.10 240), oklch(0.80 0.10 270), oklch(0.80 0.10 300), oklch(0.80 0.10 330), oklch(0.80 0.10 360))
 rainbow-dark = linear-gradient(to right, oklch(0.70 0.10 0), oklch(0.70 0.10 30), oklch(0.70 0.10 60), oklch(0.70 0.10 90), oklch(0.70 0.10 120), oklch(0.70 0.10 150), oklch(0.70 0.10 180), oklch(0.70 0.10 210), oklch(0.70 0.10 240), oklch(0.70 0.10 270), oklch(0.70 0.10 300), oklch(0.70 0.10 330), oklch(0.70 0.10 360))
 
-/* Material Design 3 Elevation shadows */
+/* 午夜手札主题：纸张底色、细线边框、轻阴影 */
 :root
-  --elevation-1 0 1px 3px 1px rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.3)
-  --elevation-2 0 2px 6px 2px rgba(0, 0, 0, 0.15), 0 1px 2px 0 rgba(0, 0, 0, 0.3)
-  --elevation-3 0 4px 8px 3px rgba(0, 0, 0, 0.15), 0 1px 3px 0 rgba(0, 0, 0, 0.3)
-  --elevation-4 0 6px 10px 4px rgba(0, 0, 0, 0.15), 0 2px 3px 0 rgba(0, 0, 0, 0.3)
-  --elevation-5 0 8px 12px 6px rgba(0, 0, 0, 0.15), 0 4px 4px 0 rgba(0, 0, 0, 0.3)
+  --elevation-1 0 1px 0 rgba(20, 18, 25, 0.08), 0 18px 42px -34px rgba(20, 18, 25, 0.45)
+  --elevation-2 0 1px 0 rgba(20, 18, 25, 0.10), 0 22px 54px -34px rgba(20, 18, 25, 0.50)
+  --elevation-3 0 1px 0 rgba(20, 18, 25, 0.12), 0 28px 70px -38px rgba(20, 18, 25, 0.58)
+  --elevation-4 0 1px 0 rgba(20, 18, 25, 0.14), 0 34px 84px -42px rgba(20, 18, 25, 0.62)
+  --elevation-5 0 1px 0 rgba(20, 18, 25, 0.16), 0 40px 100px -46px rgba(20, 18, 25, 0.66)
+  --card-shadow 0 1px 0 rgba(20, 18, 25, 0.08), 0 24px 64px -42px rgba(20, 18, 25, 0.44)
 
-  /* MD3 border radius */
+  /* 细窄圆角让博客更像编辑排版，而不是控制台卡片 */
   --radius-extra-small 4px
-  --radius-small 8px
-  --radius-medium 12px
-  --radius-large 16px
-  --radius-extra-large 28px
+  --radius-small 6px
+  --radius-medium 8px
+  --radius-large 10px
+  --radius-extra-large 16px
   --radius-full 9999px
 
-  --content-delay 150ms
+  --content-delay 120ms
 
 /* An util to define variables that vary with light and dark mode */
 define(vars)
@@ -36,87 +37,89 @@ define(vars)
       if length(value) > 1
         {key}: value[1]
 
-/* Material Design 3 Color System - Surface Tones */
 define({
   /* Primary colors */
-  --primary: oklch(0.70 0.14 var(--hue)) oklch(0.75 0.14 var(--hue))
-  --on-primary: oklch(0.98 0.02 var(--hue)) oklch(0.14 0.02 var(--hue))
-  --primary-container: oklch(0.85 0.10 var(--hue)) oklch(0.30 0.06 var(--hue))
-  --on-primary-container: oklch(0.15 0.12 var(--hue)) oklch(0.90 0.10 var(--hue))
+  --primary: oklch(0.58 0.20 var(--hue)) oklch(0.76 0.17 var(--hue))
+  --on-primary: oklch(0.99 0.01 86) oklch(0.13 0.02 var(--hue))
+  --primary-container: oklch(0.93 0.08 var(--hue)) oklch(0.30 0.08 var(--hue))
+  --on-primary-container: oklch(0.22 0.10 var(--hue)) oklch(0.94 0.06 var(--hue))
 
   /* Secondary colors */
-  --secondary: oklch(0.65 0.12 var(--hue)) oklch(0.70 0.10 var(--hue))
-  --on-secondary: oklch(0.98 0.02 var(--hue)) oklch(0.14 0.02 var(--hue))
-  --secondary-container: oklch(0.90 0.05 var(--hue)) oklch(0.25 0.06 var(--hue))
-  --on-secondary-container: oklch(0.15 0.10 var(--hue)) oklch(0.85 0.08 var(--hue))
+  --secondary: oklch(0.58 0.13 35) oklch(0.74 0.12 35)
+  --on-secondary: oklch(0.99 0.01 86) oklch(0.13 0.02 35)
+  --secondary-container: oklch(0.92 0.07 35) oklch(0.30 0.06 35)
+  --on-secondary-container: oklch(0.25 0.08 35) oklch(0.93 0.05 35)
 
-  /* Surface colors (MD3) */
-  --surface: oklch(0.98 0.01 var(--hue)) oklch(0.14 0.015 var(--hue))
-  --surface-dim: oklch(0.95 0.01 var(--hue)) oklch(0.09 0.015 var(--hue))
-  --surface-container: oklch(0.96 0.01 var(--hue)) oklch(0.18 0.015 var(--hue))
-  --surface-container-high: oklch(0.94 0.01 var(--hue)) oklch(0.21 0.015 var(--hue))
-  --surface-container-highest: oklch(0.92 0.01 var(--hue)) oklch(0.24 0.015 var(--hue))
-  --on-surface: oklch(0.22 0.02 var(--hue)) oklch(0.92 0.02 var(--hue))
-  --on-surface-variant: oklch(0.40 0.03 var(--hue)) oklch(0.75 0.03 var(--hue))
+  /* Surface colors */
+  --surface: oklch(0.99 0.012 86) oklch(0.16 0.018 305)
+  --surface-dim: oklch(0.94 0.020 86) oklch(0.10 0.020 305)
+  --surface-container: oklch(0.985 0.018 86) oklch(0.19 0.021 305)
+  --surface-container-high: oklch(0.965 0.022 86) oklch(0.23 0.025 305)
+  --surface-container-highest: oklch(0.94 0.026 86) oklch(0.28 0.028 305)
+  --on-surface: oklch(0.19 0.015 285) oklch(0.93 0.018 86)
+  --on-surface-variant: oklch(0.40 0.022 285) oklch(0.76 0.020 86)
 
   /* Background & Card */
-  --page-bg: oklch(0.98 0.005 var(--hue)) oklch(0.11 0.01 var(--hue))
-  --card-bg: oklch(0.98 0.01 var(--hue)) oklch(0.17 0.02 var(--hue))
+  --page-bg: oklch(0.972 0.025 86) oklch(0.105 0.020 305)
+  --card-bg: oklch(0.995 0.014 88) oklch(0.18 0.022 305)
+  --card-border: oklch(0.86 0.035 86) oklch(0.33 0.045 305)
+  --accent-warm: oklch(0.70 0.15 35) oklch(0.78 0.13 35)
+  --accent-cyan: oklch(0.62 0.13 205) oklch(0.78 0.11 205)
 
   /* Outline & Dividers */
-  --outline: oklch(0.70 0.02 var(--hue)) oklch(0.40 0.02 var(--hue))
-  --outline-variant: oklch(0.85 0.02 var(--hue)) oklch(0.30 0.02 var(--hue))
-  --line-divider: black(0.08) white(0.08)
-  --line-color: black(0.1) white(0.1)
-  --meta-divider: black(0.2) white(0.2)
+  --outline: oklch(0.67 0.035 86) oklch(0.45 0.035 305)
+  --outline-variant: oklch(0.84 0.030 86) oklch(0.32 0.030 305)
+  --line-divider: oklch(0.86 0.030 86) oklch(0.31 0.030 305)
+  --line-color: oklch(0.78 0.035 86) oklch(0.36 0.035 305)
+  --meta-divider: oklch(0.68 0.035 86) oklch(0.48 0.035 305)
 
-  /* Button colors - MD3 filled tonal */
-  --btn-content: oklch(0.98 0.02 var(--hue)) oklch(0.90 0.05 var(--hue))
+  /* Button colors */
+  --btn-content: oklch(0.22 0.025 285) oklch(0.94 0.025 86)
 
-  --btn-regular-bg: oklch(0.90 0.05 var(--hue)) oklch(0.28 0.05 var(--hue))
-  --btn-regular-bg-hover: oklch(0.85 0.08 var(--hue)) oklch(0.32 0.06 var(--hue))
-  --btn-regular-bg-active: oklch(0.80 0.10 var(--hue)) oklch(0.36 0.07 var(--hue))
+  --btn-regular-bg: oklch(0.92 0.075 var(--hue)) oklch(0.27 0.07 var(--hue))
+  --btn-regular-bg-hover: oklch(0.88 0.095 var(--hue)) oklch(0.33 0.08 var(--hue))
+  --btn-regular-bg-active: oklch(0.82 0.115 var(--hue)) oklch(0.38 0.09 var(--hue))
 
   /* Button tonal variant */
-  --btn-tonal-bg: oklch(0.85 0.08 var(--hue)) oklch(0.25 0.06 var(--hue))
-  --btn-tonal-bg-hover: oklch(0.80 0.10 var(--hue)) oklch(0.30 0.07 var(--hue))
-  --btn-tonal-bg-active: oklch(0.75 0.12 var(--hue)) oklch(0.35 0.08 var(--hue))
+  --btn-tonal-bg: oklch(0.90 0.070 35) oklch(0.28 0.060 35)
+  --btn-tonal-bg-hover: oklch(0.85 0.090 35) oklch(0.34 0.070 35)
+  --btn-tonal-bg-active: oklch(0.80 0.110 35) oklch(0.40 0.080 35)
 
-  --btn-tonal-content: oklch(0.20 0.05 var(--hue)) oklch(0.90 0.05 var(--hue))
+  --btn-tonal-content: oklch(0.23 0.04 35) oklch(0.94 0.04 35)
 
   /* Button outlined variant */
   --btn-outlined-bg: transparent transparent
-  --btn-outlined-border: oklch(0.60 0.05 var(--hue)) oklch(0.45 0.05 var(--hue))
+  --btn-outlined-border: var(--outline) var(--outline)
 
   /* Button plain/text variant */
-  --btn-plain-bg-hover: oklch(0.95 0.02 var(--hue)) oklch(0.25 0.04 var(--hue))
-  --btn-plain-bg-active: oklch(0.90 0.04 var(--hue)) oklch(0.30 0.05 var(--hue))
+  --btn-plain-bg-hover: oklch(0.93 0.045 var(--hue)) oklch(0.25 0.050 var(--hue))
+  --btn-plain-bg-active: oklch(0.88 0.065 var(--hue)) oklch(0.31 0.060 var(--hue))
 
-  --btn-card-bg-hover: oklch(0.96 0.01 var(--hue)) oklch(0.22 0.03 var(--hue))
-  --btn-card-bg-active: oklch(0.92 0.02 var(--hue)) oklch(0.28 0.04 var(--hue))
+  --btn-card-bg-hover: oklch(0.97 0.035 86) oklch(0.24 0.040 305)
+  --btn-card-bg-active: oklch(0.93 0.045 86) oklch(0.30 0.050 305)
 
   --enter-btn-bg: var(--btn-regular-bg)
   --enter-btn-bg-hover: var(--btn-regular-bg-hover)
   --enter-btn-bg-active: var(--btn-regular-bg-active)
 
-  --deep-text: oklch(0.25 0.02 var(--hue))
+  --deep-text: oklch(0.20 0.02 285) oklch(0.94 0.02 86)
 
-  --title-active: oklch(0.6 0.1 var(--hue))
+  --title-active: oklch(0.52 0.17 var(--hue)) oklch(0.82 0.14 var(--hue))
 
   --inline-code-bg: var(--btn-regular-bg)
   --inline-code-color: var(--btn-content)
-  --selection-bg: oklch(0.90 0.05 var(--hue)) oklch(0.40 0.08 var(--hue))
+  --selection-bg: oklch(0.86 0.08 var(--hue)) oklch(0.42 0.09 var(--hue))
   --codeblock-selection: oklch(0.40 0.08 var(--hue))
   --codeblock-bg: oklch(0.17 0.015 var(--hue)) oklch(0.17 0.015 var(--hue))
   --codeblock-topbar-bg: oklch(0.3 0.02 var(--hue)) oklch(0.12 0.015 var(--hue))
 
   --license-block-bg: black(0.03) var(--codeblock-bg)
 
-  --link-underline: oklch(0.93 0.04 var(--hue)) oklch(0.40 0.08 var(--hue))
-  --link-hover: oklch(0.95 0.025 var(--hue)) oklch(0.40 0.08 var(--hue))
-  --link-active: oklch(0.90 0.05 var(--hue)) oklch(0.35 0.07 var(--hue))
+  --link-underline: oklch(0.86 0.08 var(--hue)) oklch(0.40 0.08 var(--hue))
+  --link-hover: oklch(0.92 0.07 var(--hue)) oklch(0.45 0.09 var(--hue))
+  --link-active: oklch(0.84 0.10 var(--hue)) oklch(0.35 0.08 var(--hue))
 
-  --float-panel-bg: oklch(0.98 0.01 var(--hue)) oklch(0.19 0.02 var(--hue))
+  --float-panel-bg: oklch(0.995 0.014 88) oklch(0.20 0.025 305)
 
   --scrollbar-bg-light: black(0.4)
   --scrollbar-bg-hover-light: black(0.5)
@@ -142,9 +145,9 @@ define({
   --admonitions-color-warning: oklch(0.7 0.14 60) oklch(0.75 0.14 60)
   --admonitions-color-caution: oklch(0.6 0.2 25) oklch(0.65 0.2 25)
 
-  --toc-badge-bg: oklch(0.89 0.050 var(--hue)) var(--btn-regular-bg)
-  --toc-btn-hover: oklch(0.926 0.015 var(--hue)) oklch(0.22 0.02 var(--hue))
-  --toc-btn-active: oklch(0.90 0.015 var(--hue)) oklch(0.25 0.02 var(--hue))
+  --toc-badge-bg: oklch(0.90 0.070 var(--hue)) var(--btn-regular-bg)
+  --toc-btn-hover: oklch(0.94 0.030 86) oklch(0.24 0.030 305)
+  --toc-btn-active: oklch(0.90 0.040 86) oklch(0.29 0.040 305)
   --toc-width: calc((100vw - var(--page-width)) / 2 - 1rem)
-  --toc-item-active: oklch(0.70 0.13 var(--hue)) oklch(0.35 0.07 var(--hue))
+  --toc-item-active: oklch(0.80 0.12 var(--hue)) oklch(0.36 0.08 var(--hue))
 })
