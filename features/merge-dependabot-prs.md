@@ -47,19 +47,15 @@
 ## 影响范围
 
 - 无 API/接口变更
-- 构建产物不变
+- 构建产物从纯静态站点变为 Cloudflare Workers SSR 输出（`dist/_worker.js/`）
 - 运行时行为无变化（所有更新均为补丁或次要版本，向后兼容）
 - @biomejs/biome 升级至 2.4.10 后新增了部分 lint 规则，但当前代码库无违规
 
-## PR #10（Cloudflare Workers）暂不合并原因
+## 额外修复：SSR 构建兼容性
 
-PR #10 由 Cloudflare Wrangler autoconfig 自动创建，包含：
+合并 PR #10 后，切换到 Cloudflare Workers 适配器模式下构建失败，根因为 `src/styles/markdown.css` 中使用 `@apply link` 引用了 `main.css` 中定义的 `.link` 自定义类，SSR 模式下的 Tailwind CSS 处理链无法跨文件解析。
 
-- 添加 `@astrojs/cloudflare` 集成（`adapter: cloudflare()`）
-- 创建 `wrangler.jsonc` 配置文件
-- 修改 `astro.config.mjs` 输出模式
-
-当前站点部署在 **Vercel**（域名 zenst.cyou），采用静态站点输出模式。合并此 PR 会将输出模式改为 Cloudflare Workers 适配器模式，破坏当前 Vercel 部署。如需迁移部署平台，应由项目所有者决策后再合并。
+修复：移除 `markdown.css` 中的 `link` 引用，`@apply` 中的 `link` 不是 Tailwind 的实用工具类，不应出现在该语境中。`.link` 类定义保留在 `main.css` 中以供 HTML 元素直接使用。
 
 ## 验证方式
 
@@ -72,4 +68,4 @@ PR #10 由 Cloudflare Wrangler autoconfig 自动创建，包含：
 ## 已知限制
 
 - @biomejs/biome 从 2.2.5 升级到 2.4.10 跨越多个主版本，Biome 的配置格式和 lint 规则有变化，当前项目使用 `biome.json` 配置且 `pnpm lint`（`biome check --write`）通过，说明兼容
-- 4 个 PR 合并为独立 commit 而非 squash merge，保持了 Dependabot 的原始提交信息
+- 5 个 PR 合并为独立 commit，保持了 Dependabot 和 Cloudflare 的原始提交信息
