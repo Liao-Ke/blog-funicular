@@ -1,0 +1,22 @@
+{
+  "project_id": "6319d7e1-f420-4223-bd76-8350ccb07f2d",
+  "project_title": "blog-funicular",
+  "resources": [
+    {
+      "id": "4a03759b-a16b-4bdf-9461-67fa453a54e0",
+      "resource_type": "github_repo",
+      "resource_ref": {
+        "url": "https://github.com/Liao-Ke/blog-funicular"
+      }
+    },
+    {
+      "id": "da6ed4e7-63f7-4e10-a788-9744f92985c9",
+      "resource_type": "local_directory",
+      "resource_ref": {
+        "label": "blog-funicular",
+        "daemon_id": "019ea0b9-da21-731b-a8e7-f011f5246be5",
+        "local_path": "/home/Lsk/Documents/Code/Web/blog-funicular"
+      }
+    }
+  ]
+}

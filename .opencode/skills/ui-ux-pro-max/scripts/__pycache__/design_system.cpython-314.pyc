@@ -1,0 +1,242 @@
++
+�<ri^���@�Rt^RIt^RIt^RIt^RIHt^RIHt^RIHtH	t	Rt
+RR^/RR^/R	R^/R
+R^/RR^//t!RR4t^ZtRRltRRltR.RRlltR/RRlltRRltR0RRlltRRltRRlt]R8Xd�^RIt]P0!R R!7t]P5R"R#R$7]P5R%R&]RR'R(7]P5R)R*RR+.RR,R-7]P94t]!]P<]P>]P@4t!]"!]!4R#R#)1a�
+Design System Generator - Aggregates search results and applies reasoning
+to generate comprehensive design system recommendations.
+
+Usage:
+    from design_system import generate_design_system
+    result = generate_design_system("SaaS dashboard", "My Project")
+    
+    # With persistence (Master + Overrides pattern)
+    result = generate_design_system("SaaS dashboard", "My Project", persist=True)
+    result = generate_design_system("SaaS dashboard", "My Project", persist=True, page="dashboard")
+N)�datetime)�Path)�search�DATA_DIRzui-reasoning.csv�product�max_results�style�color�landing�
+typographyc��a�]tRt^%toRtRtV3RlRltRV3RlRlltV3RlR	ltV3R
+lRlt	V3RlRlt
+V3RlRltRV3RlRlltRtVtR#)�DesignSystemGeneratorzAGenerates design system recommendations from aggregated searches.c�0�VP4VnR#�N)�_load_reasoning�reasoning_data)�selfs&�s/Users/viettranx/Documents/coding/next-level-builder/ui-ux-pro-max-skill/src/ui-ux-pro-max/scripts/design_system.py�__init__�DesignSystemGenerator.__init__(s��"�2�2�4���c� <�V^8�dQhRS[/#)��return)�list)�format�__classdict__s"�r�__annotate__�"DesignSystemGenerator.__annotate__+s���+�+��+rc���\\,pVP4'g.#\VRRR7;_uu_4p\	\
+P!V44uuRRR4# +'giR#;i)zLoad reasoning rules from CSV.�r�utf-8��encodingN)r�REASONING_FILE�exists�openr�csv�
+DictReader)r�filepath�fs&  rr�%DesignSystemGenerator._load_reasoning+sO���n�,����� � ��I��(�C�'�2�2�a�����q�)�*�3�2�2�2�s�A*�*A;	Nc�,<�V^8�dQhRS[RS[RS[/#)r�query�style_priorityr)�strr�dict)rrs"�rrr3s"�����#��t��t�rc��/p\P4FiwrEVR8XdIV'dAV'dRPVR,4MTpVRV2p\WtVR,4W4&KT\WVR,4W4&Kk	V#)z)Execute searches across multiple domains.r� :NrNr)�SEARCH_CONFIG�items�joinr)rr-r.�results�domain�config�priority_query�combined_querys&&&     r�_multi_domain_search�*DesignSystemGenerator._multi_domain_search3s|����+�1�1�3�N�F��� �^�AO����.��*<�!=�UZ��$)�7�!�N�+;�!<��"(����AV�"W���"(���}�8M�"N���4��rc�&<�V^8�dQhRS[RS[/#)r�categoryr�r/r0)rrs"�rrr@s�����S��T�rc�xa�VP4oVPF,pVPRR4P4S8XgK*Vu#	VPF5pVPRR4P4pVS9g
+SV9gK3Vu#	VPF�pVPRR4P4pVPRR4PRR4P	4p\
+;QJdV3RlV4F'gKRM	RM!V3RlV44'gK�Vu#	/#)	z,Find matching reasoning rule for a category.�UI_Category��/r2�-c3�,<"�TF	qS9x�K	R#5ir�)�.0�kw�category_lowers& �r�	<genexpr>�=DesignSystemGenerator._find_reasoning_rule.<locals>.<genexpr>Ss����;�(�B��'�(���TF)�lowerr�get�replace�split�any)rr>�rule�ui_cat�keywordsrIs&&   @r�_find_reasoning_rule�*DesignSystemGenerator._find_reasoning_rule@s����!���)���'�'�D��x�x��r�*�0�0�2�n�D���(�
+�'�'�D��X�X�m�R�0�6�6�8�F���'�>�V�+C���(��'�'�D��X�X�m�R�0�6�6�8�F��~�~�c�3�/�7�7��S�A�G�G�I�H��s�;�(�;�s�s�s�;�(�;�;�;���	(��	rc�,<�V^8�dQhRS[RS[RS[/#)rr>�search_resultsrr?)rrs"�rrrXs"��� 
+� 
+�� 
+�d� 
+�t� 
+rc�J�VPV4pV'gRRRRR.RRRR	R
+RRRR/RR/#/p\P!VPRR44pRVPRR4RVPRR4PR4Uu.uFqUP4NK	upRVPRR4RVPRR4R
+VPRR4RVPRR4RVRVPRR4/# \PdL�i;iuupi)z(Apply reasoning rules to search results.�pattern�Hero + Features + CTAr.�
+MinimalismzFlat Design�
+color_mood�Professional�typography_mood�Clean�key_effectszSubtle hover transitions�anti_patternsrB�decision_rules�severity�MEDIUM�Decision_Rulesz{}�Recommended_Pattern�Style_Priority�+�
+Color_Mood�Typography_Mood�Key_Effects�Anti_Patterns�Severity)rU�json�loadsrN�JSONDecodeErrorrP�strip)rr>rXrRrc�ss&&&   r�_apply_reasoning�&DesignSystemGenerator._apply_reasoningXs8���(�(��2����2� �<��"?��n�!�7��9��� �"��H�	�	���	�!�Z�Z����1A�4�(H�I�N�
+�t�x�x� 5�r�:��$�(�(�;K�R�2P�2V�2V�WZ�2[�\�2[�Q�w�w�y�2[�\��$�(�(�<��4��t�x�x�(9�2�>��4�8�8�M�2�6��T�X�X�o�r�:��n������X�6�	
+�		
+���#�#�	��	��
+]s�&D�D 
+�D�Dc�,<�V^8�dQhRS[RS[RS[/#)rr6�priority_keywordsr)rr0)rrs"�rrrzs'���#K�#K�$�#K�4�#K�D�#Krc�,�V'g/#V'g
+V^,#VF\pVP4P4pVF5pVPRR4P4pWF9g	Wd9gK1Vuu#	K^	.pVF�p\V4P4p^p	VF�p
+V
+P4P4pW�PRR4P49dV	^
+,p	KPW�PRR4P49dV	^,p	KW�9gK�V	^,p	K�	VP	W�34K�	VPRRR7V'd&V^,^,^8�dV^,^,#V^,#)z7Select best matching result based on priority keywords.�Style CategoryrB�Keywordsc��V^,#)�rF)�xs&r�<lambda>�:DesignSystemGenerator._select_best_match.<locals>.<lambda>�s��!�A�$rT)�key�reverse)rMrrrNr/�append�sort)rr6rw�priority�priority_lower�result�
+style_name�scored�
+result_str�scorerH�kw_lowers&&&         r�_select_best_match�(DesignSystemGenerator._select_best_matchzsR����I� ��1�:��*�H�%�^�^�-�3�3�5�N�!��#�Z�Z�(8�"�=�C�C�E�
+�!�/�:�3O�!�M�"�*����F��V��*�*�,�J��E�'���8�8�:�+�+�-���z�z�*:�B�?�E�E�G�G��R�K�E����J��!;�!A�!A�!C�C��Q�J�E��+��Q�J�E�(��M�M�5�/�*�� 	������5�%�&��)�A�,��*:�v�a�y��|�J���
+�Jrc�&<�V^8�dQhRS[RS[/#)r�search_resultr)r0r)rrs"�rrr�s���0�0�d�0�t�0rc�&�VPR.4#)z-Extract results list from search result dict.r6)rN)rr�s&&r�_extract_results�&DesignSystemGenerator._extract_results�s��� � ��B�/�/rc�,<�V^8�dQhRS[RS[RS[/#)rr-�project_namerr?)rrs"�rrr�s'���I
+�I
+�c�I
+��I
+��I
+rc�P�\VR^4pVPR.4pRpV'dV^,PRR4pVPV/4pVPR.4pVPW4pW8R&VP	VPR/44p	VP	VPR/44p
+VP	VPR/44pVP	VPR	/44pVPW�PR.44pV
+'d
+V
+^,M/pV'd
+V^,M/pV'd
+V^,M/pVPR
+R4pVPRR4pV'dTMTpRT;'gVP4RVRRVPRVPRR44RVPRR4RVPRR4RVPRR4RVPRR4/RRVPRR4RVPR R4R!VR"VPR#R4R$VPR%R4R&VPR'R4R(VPR)R4/R*R+VPR,R-4R.VPR/R04R1VPR2R34R4VPR5R64R7VPR8R94R:VPR;R4/RR<VPR=R>4R?VPR@R>4RAVPRBVPRCR44R$VPR%R4RDVPRER4RFVPRGR4/RVRHVPRHR4RIVPRI/4RJVPRJRK4/
+#)Lz/Generate complete design system recommendation.rr6�GeneralzProduct Typer.rr	rr
+�Effects & AnimationrBrar�r>rZ�namezPattern Namer[�sections�Section OrderzHero > Features > CTA�cta_placement�Primary CTA Placementz
+Above fold�color_strategy�Color Strategy�
+conversionzConversion Optimizationryr\�type�Type�effectsrTrz�best_for�Best For�performance�Performance�accessibility�Accessibility�colors�primaryzPrimary (Hex)�#2563EB�	secondaryzSecondary (Hex)�#3B82F6�ctaz	CTA (Hex)�#F97316�
+backgroundzBackground (Hex)�#F8FAFC�textz
+Text (Hex)�#1E293B�notes�Notes�headingzHeading Font�Inter�bodyz	Body Font�moodzMood/Style Keywordsr_�google_fonts_urlzGoogle Fonts URL�
+css_importz
+CSS Importrbrcrdre)rrNrtr;r�r��upper)rr-r��product_result�product_resultsr>�	reasoningr.rX�style_results�color_results�typography_results�landing_results�
+best_style�
+best_color�best_typography�best_landing�style_effects�reasoning_effects�combined_effectss&&&                 r�generate�DesignSystemGenerator.generate�s��� ��y�!�4��(�,�,�Y��;�����&�q�)�-�-�n�i�H�H��)�)�(�B�7�	�"���'7��<���2�2�5�I��$2�y�!��-�-�n�.@�.@��"�.M�N���-�-�n�.@�.@��"�.M�N��!�2�2�>�3E�3E�l�TV�3W�X���/�/��0B�0B�9�b�0Q�R���,�,�]�M�M�JZ�\^�<_�`�
+�)6�]�1�%�B�
+�3E�,�Q�/�2��-<��q�)�"��#���'<�b�A��%�M�M�-��<��,9�=�?P���L�9�9�E�K�K�M������(�(�����y�Ri�9j�k��L�,�,�_�>U�V���!1�!1�2I�<�!X� �,�"2�"2�3C�R�"H��l�.�.�/H�"�M����
+���'7��F��
+���v�y�9��=��J�N�N�:�r�:��J�N�N�:�r�:��z�~�~�m�R�@�������!D����:�>�>�/�9�E��Z�^�^�,=�y�I��z�~�~�k�9�=��j�n�n�-?��K��
+���|�Y�?�������4����?�.�.�~�w�G���+�+�K��A���+�+�,A�9�=�=�Qb�df�Cg�h��O�/�/�
+�B�?�"�O�$7�$7�8J�B�$O��o�1�1�,��C���+��Y�]�]�?�B�?��i�m�m�,<�b�A��	���j�(�;�M'
+�'	
+r)rr)�__name__�
+__module__�__qualname__�__firstlineno__�__doc__rrr;rUrtr�r�r��__static_attributes__�__classdictcell__)rs@rrr%s_����K�5�+�+�����0 
+� 
+�D#K�#K�J0�0�I
+�I
+�I
+rrc�0�V^8�dQhR\R\/#�r�design_systemr�r0r/)rs"rrr�s��z�z�D�z�S�zrc	���VPRR4pVPR/4pVPR/4pVPR/4pVPR/4pVPRR4pVPR	R4pR
+RlpVPRR4PR4p	V	U
+u.uF*q�P4'gKV
+P4NK,	p	p
+.p\^,
+pVP	RRV,,R,4VP	RVR2P\4R,4VP	RRV,,R,4VP	RR\,,R,4VP	RVPRR42P\4R,4VPR4'd?VP	RVPRR42P\4R,4VPR4'd?VP	RVPRR42P\4R,4VP	RP\4R,4\V	^4F6wr�VP	RVRV2P\4R,4K8	VP	RR\,,R,4VP	RVPRR42P\4R,4VPR4'dTV!RVPRR42R \4F.pVP	VP\4R,4K0	VPR!4'dTV!R"VPR!R42R \4F.pVP	VP\4R,4K0	VPR#4'gVPR$4'dWR%VPR#R4R&VPR$R42pVP	R V2P\4R,4VP	RR\,,R,4VP	R'P\4R,4VP	R(VPR)R42P\4R,4VP	R*VPR+R42P\4R,4VP	R,VPR-R42P\4R,4VP	R.VPR/R42P\4R,4VP	R0VPR1R42P\4R,4VPR24'dTV!R3VPR2R42R \4F.pVP	VP\4R,4K0	VP	RR\,,R,4VP	R4VPR5R4R6VPR7R42P\4R,4VPR84'dTV!R9VPR8R42R \4F.pVP	VP\4R,4K0	VPR!4'dTV!R"VPR!R42R \4F.pVP	VP\4R,4K0	VPR:4'd?VP	R;VPR:R42P\4R,4VPR<4'dGVP	R=VPR<R4R>,R?2P\4R,4VP	RR\,,R,4V'd�VP	R@P\4R,4V!VR \4F.pVP	VP\4R,4K0	VP	RR\,,R,4V'd�VP	RAP\4R,4V!VR \4F.pVP	VP\4R,4K0	VP	RR\,,R,4VP	RBP\4R,4.RDOpVF1pVP	R V2P\4R,4K3	VP	RR\,,R,4VP	RRV,,R,4RCPV4#uup
+i)Ez:Format design system as ASCII box with emojis (MCP-style).r��PROJECTrZrr�rrarBrbc�H�V^8�dQhR\R\R\R\/#)rr��prefix�widthr)r/�intr)rs"rr�&format_ascii_box.<locals>.__annotate__�s(������S�����rc�P�V'g.#VP4p.pTpVFjp\V4\V4,^,V^,
+8:dYUV8wdRMRV,,pKKWQ8wdVPV4W,pKl	WQ8wdVPV4V#)z#Wrap long text into multiple lines.r2rB)rP�lenr�)r�r�r��words�lines�current_line�words&&&    r�	wrap_text�#format_ascii_box.<locals>.wrap_text�s�����I��
+�
+��������D��<� �3�t�9�,�q�0�E�A�I�=���(>��B�$� N�N���)��L�L��.�%�}����!��L�L��&��rr��>rirDz|  TARGET: z - RECOMMENDED DESIGN SYSTEM�|r2z|  PATTERN: r�r�z|     Conversion: r�z|     CTA: z|     Sections:z|       z. z
+|  STYLE: rTz
+Keywords: z|     r�z
+Best For: r�r�zPerformance: z | Accessibility: z
+|  COLORS:z|     Primary:    r�z|     Secondary:  r�z|     CTA:        r�z|     Background: r�z|     Text:       r�r�zNotes: z|  TYPOGRAPHY: r�z / r�r�zMood: r�z|     Google Fonts: r�z|     CSS Import: :N�FNz...z|  KEY EFFECTS:z|  AVOID (Anti-patterns):z|  PRE-DELIVERY CHECKLIST:�
+)z2[ ] No emojis as icons (use SVG: Heroicons/Lucide)z,[ ] cursor-pointer on all clickable elementsz4[ ] Hover states with smooth transitions (150-300ms)z+[ ] Light mode: text contrast 4.5:1 minimumz)[ ] Focus states visible for keyboard navz$[ ] prefers-reduced-motion respectedz,[ ] Responsive: 375px, 768px, 1024px, 1440px)rNrPrr�	BOX_WIDTHr��ljust�	enumerater5)r��projectrZrr�rr�rbr�r�rsr��w�i�section�line�	perf_a11y�checklist_items�items&                  r�format_ascii_boxr��sB������	�:�G����	�2�.�G����g�r�*�E����x��,�F��"�"�<��4�J�����r�2�G�!�%�%�o�r�:�M��&�{�{�:�r�*�0�0��5�H�#+�9�8�a�w�w�y�	����	�8�H�9��E��A��A�	�L�L��s�Q�w���$�%�	�L�L�;�w�i�'C�D�J�J�9�U�X[�[�\�	�L�L��s�Q�w���$�%�	�L�L��s�Y��&��,�-�
+�L�L�<����F�B� 7�8�9�?�?�	�J�S�P�Q��{�{�<� � ����)�'�+�+�l�B�*G�)H�I�O�O�PY�Z�]`�`�a��{�{�?�#�#����{�7�;�;���#C�"D�E�K�K�I�V�Y\�\�]�	�L�L�"�(�(��3�c�9�:���!�,�
+�����x��s�"�W�I�.�4�4�Y�?�#�E�F�-�	�L�L��s�Y��&��,�-�
+�L�L�:�e�i�i���3�4�5�;�;�I�F��L�M��y�y�����
+�5�9�9�Z��+D�*E�F��R[�\�D��L�L����I�.��4�5�]��y�y�����
+�5�9�9�Z��+D�*E�F��R[�\�D��L�L����I�.��4�5�]��y�y����5�9�9�_�#=�#=�#�E�I�I�m�R�$@�#A�AS�TY�T]�T]�^m�oq�Tr�Ss�t�	����v�i�[�)�/�/�	�:�S�@�A�	�L�L��s�Y��&��,�-�
+�L�L��#�#�I�.��4�5�	�L�L�%�f�j�j��B�&?�%@�A�G�G�	�R�UX�X�Y�	�L�L�%�f�j�j��b�&A�%B�C�I�I�)�T�WZ�Z�[�	�L�L�%�f�j�j���&;�%<�=�C�C�I�N�QT�T�U�	�L�L�%�f�j�j��r�&B�%C�D�J�J�9�U�X[�[�\�	�L�L�%�f�j�j���&<�%=�>�D�D�Y�O�RU�U�V��z�z�'������
+�
+�7�B�(?�'@�A�8�Y�W�D��L�L����I�.��4�5�X�	�L�L��s�Y��&��,�-�
+�L�L�?�:�>�>�)�R�#@�"A��Z�^�^�TZ�\^�E_�D`�a�g�g�hq�r�ux�x�y��~�~�f�����z�~�~�f�b�'A�&B�C�X�y�Y�D��L�L����I�.��4�5�Z��~�~�j�!�!��
+�:�>�>�*�b�+I�*J�K�X�W`�a�D��L�L����I�.��4�5�b��~�~�(�)�)����+�J�N�N�;M�r�,R�+S�T�Z�Z�[d�e�hk�k�l��~�~�l�#�#����)�*�.�.��r�*J�3�*O�)P�PS�T�Z�Z�[d�e�hk�k�l�	�L�L��s�Y��&��,�-�����&�,�,�Y�7�#�=�>��g�x��;�D��L�L����I�.��4�5�<����S�3��?�*�S�0�1�����0�6�6�y�A�C�G�H��m�X�y�A�D��L�L����I�.��4�5�B����S�3��?�*�S�0�1�
+�L�L�-�3�3�I�>��D�E��O� �����v�d�V�_�*�*�9�5��;�<� �	�L�L��s�Y��&��,�-�	�L�L��s�Q�w���$�%��9�9�U����y:s�*k
+�k
+c�0�V^8�dQhR\R\/#r�r�)rs"rrros��[�[�4�[�C�[rc	���VPRR4pVPR/4pVPR/4pVPR/4pVPR/4pVPRR4pVPR	R4p.pVPR
+V24VPR4VPR4VPRVPRR424VPR4'd%VPRVPRR424VPR4'd%VPRVPRR424VPR4'd%VPRVPRR424VPRVPRR424VPR4VPR4VPRVPRR424VPR4'd%VPRVPRR424VPR4'd%VPRVPRR424VPR4'gVPR4'd8VPRVPRR4RVPRR424VPR4VPR4VPR 4VPR!4VPR"VPR#R4R$24VPR%VPR&R4R$24VPR'VPR(R4R$24VPR)VPR*R4R$24VPR+VPR,R4R$24VPR-4'd&VPR.VPR-R4R/24VPR4VPR04VPR1VPR2R424VPR3VPR4R424VPR54'd%VPR6VPR5R424VPR4'd%VPRVPRR424VPR74'd%VPR8VPR7R424VPR94'dVVPR:4VPR;4VPVPR9R44VPR<4VPR4V'd5VPR=4VPV4VPR4V'dIVPR>4R?p	VPR@VPRAV	424VPR4VPRB4VPRC4VPRD4VPRE4VPRF4VPRG4VPRH4VPRI4VPR4RJPV4#)Kz!Format design system as markdown.r�r�rZrr�rrarBrbz## Design System: z### Patternz- **Name:** r�r�z- **Conversion Focus:** r��- **CTA Placement:** r�z- **Color Strategy:** z- **Sections:** r�z	### StylerTz- **Keywords:** r�z- **Best For:** r�r�z- **Performance:** z | **Accessibility:** z
+### Colorsz| Role | Hex |z|------|-----|z| Primary | r�z |z| Secondary | r�z| CTA | r�z| Background | r�z	| Text | r�r�z	
+*Notes: �*�### Typographyz- **Heading:** r�z- **Body:** r�r��- **Mood:** r�z- **Google Fonts:** r�z- **CSS Import:**�```css�```z### Key Effectsz### Avoid (Anti-patterns)z
+- �- � + z### Pre-Delivery Checklistz4- [ ] No emojis as icons (use SVG: Heroicons/Lucide)z.- [ ] cursor-pointer on all clickable elements�6- [ ] Hover states with smooth transitions (150-300ms)�-- [ ] Light mode: text contrast 4.5:1 minimumz+- [ ] Focus states visible for keyboard navz&- [ ] prefers-reduced-motion respected�.- [ ] Responsive: 375px, 768px, 1024px, 1440pxr�)rNr�rOr5)
+r�r�rZrr�rr�rbr��newline_bullets
+&         r�format_markdownros�������	�:�G����	�2�.�G����g�r�*�E����x��,�F��"�"�<��4�J�����r�2�G�!�%�%�o�r�:�M��E�	�L�L�%�g�Y�/�0�	�L�L���
+�L�L���	�L�L�<����F�B� 7�8�9�:��{�{�<� � ����/����L�"�0M�/N�O�P��{�{�?�#�#����,�W�[�[��"�-M�,N�O�P��{�{�#�$�$����-�g�k�k�:J�B�.O�-P�Q�R�	�L�L�#�G�K�K�
+�B�$?�#@�A�B�	�L�L���
+�L�L���	�L�L�<��	�	�&�"� 5�6�7�8��y�y�������'��	�	�*�b�(A�'B�C�D��y�y�������'��	�	�*�b�(A�'B�C�D��y�y����5�9�9�_�#=�#=����*�5�9�9�]�B�+G�*H�H^�_d�_h�_h�ix�z|�_}�^~��	A�	�L�L���
+�L�L���	�L�L�>�#�	�L�L�>�#�	�L�L�<��
+�
+�9�b� 9�:�"�=�>�	�L�L�>�&�*�*�[�"�"=�!>�b�A�B�	�L�L�8�F�J�J�u�b�1�2�"�5�6�	�L�L�?�6�:�:�l�B�#?�"@��C�D�	�L�L�9�V�Z�Z���3�4�B�7�8��z�z�'������z�&�*�*�W�b�"9�!:�!�<�=�	�L�L���
+�L�L�!�"�	�L�L�?�:�>�>�)�R�#@�"A�B�C�	�L�L�<�
+���v�r� :�;�<�=��~�~�f������|�J�N�N�6�2�$>�#?�@�A��~�~�j�!�!����'�
+���z�2�(F�'G�H�I��~�~�(�)�)����+�J�N�N�;M�r�,R�+S�T�U��~�~�l�#�#����(�*����v�����
+���|�R�8�9�;����s��	�L�L�������&�'�����y�"����R������0�1������r�-�/�/��~�F�G�H�I����R��
+�L�L�-�.�	�L�L�G�H�	�L�L�A�B�	�L�L�I�J�	�L�L�@�A�	�L�L�>�?�	�L�L�9�:�	�L�L�A�B�	�L�L����9�9�U��r�asciic�l�V^8�dQhR\R\R\R\R\R\R\/#)rr-r��output_format�persist�page�
+output_dirr)r/�bool)rs"rrr�sB��+�+�#�+�S�+�PS�+�$(�+�8;�+�PS�+�_b�+rc���\4pVPW4pV'd\WtWP4VR8Xd\V4#\	V4#)a�
+Main entry point for design system generation.
+
+Args:
+    query: Search query (e.g., "SaaS dashboard", "e-commerce luxury")
+    project_name: Optional project name for output header
+    output_format: "ascii" (default) or "markdown"
+    persist: If True, save design system to design-system/ folder
+    page: Optional page name for page-specific override file
+    output_dir: Optional output directory (defaults to current working directory)
+
+Returns:
+    Formatted design system string
+�markdown)rr��persist_design_systemrr�)r-r�rr	r
+r�	generatorr�s&&&&&&  r�generate_design_systemr�sI�� &�'�I��&�&�u�;�M���m�:�E��
+�"��}�-�-��M�*�*rc
+�T�V^8�dQhR\R\R\R\R\/#)rr�r
+r�
+page_queryrr�)rs"rrr�s1��0�0��0�S�0�S�0�eh�0�tx�0rc�p�V'd\V4M\P!4pVPRR4pVP4P	RR4pVR,V,pVR,p.p	VPRRR7VPRRR7VR	,p
+\V4p\V
+R
+RR7;_uu_4pVPV4RRR4V	P\V
+44V'd�W�P4P	RR4R2,p\WV4p\VR
+RR7;_uu_4pVPV4RRR4V	P\V44RRR\V4RV	/# +'giL�;i +'giLN;i)a�
+Persist design system to design-system/<project>/ folder using Master + Overrides pattern.
+
+Args:
+    design_system: The generated design system dictionary
+    page: Optional page name for page-specific override file
+    output_dir: Optional output directory (defaults to current working directory)
+    page_query: Optional query string for intelligent page override generation
+
+Returns:
+    dict with created file paths and status
+r��defaultr2rDzdesign-system�pagesT)�parents�exist_okz	MASTER.mdr�r!r"Nz.md�status�success�design_system_dir�created_files)r�cwdrNrMrO�mkdir�format_master_mdr&�writer�r/�format_page_override_md)r�r
+rr�base_dirr��project_slugr�	pages_dirr�master_file�master_contentr*�	page_file�page_contents&&&&           rrr�sq��$.�t�J��4�8�8�:�H�!�$�$�^�Y�?�L��%�%�'�/�/��S�9�L� �?�2�\�A��!�G�+�I��M����D�4��8��O�O�D�4�O�0�#�k�1�K�&�m�4�N�	�k�3��	1�	1�Q�	�����
+2�����[�)�*���:�:�<�#7�#7��S�#A�"B�#� F�F�	�.�}�J�O���)�S�7�3�3�q��G�G�L�!�4����S��^�,�	�)��S�!2�3�����
+2�	1��4�3�s�F�F%�F"	�%F5	c�0�V^8�dQhR\R\/#r�r�)rs"rrrs��D�D�D�D�S�Drc��"�VPRR4pVPR/4pVPR/4pVPR/4pVPR/4pVPRR4pVPR	R4p\P!4PR
+4p.p	V	P	R4V	P	R4V	P	R4V	P	R4V	P	R4V	P	R4V	P	R4V	P	R4V	P	RV24V	P	RV24V	P	RVPRR424V	P	R4V	P	R4V	P	R4V	P	R4V	P	R4V	P	R4V	P	R4V	P	R4V	P	R4V	P	RVPRR4R24V	P	RVPRR4R 24V	P	R!VPR"R#4R$24V	P	R%VPR&R'4R(24V	P	R)VPR*R+4R,24V	P	R4VPR-4'd6V	P	R.VPR-R424V	P	R4V	P	R/4V	P	R4V	P	R0VPR1R2424V	P	R3VPR4R2424VPR54'd%V	P	R6VPR5R424VPR74'dLV	P	R8VPR1R4R9VPR4R4R:VPR7R4R;24V	P	R4VPR<4'dfV	P	R=4V	P	R>4V	P	VPR<R44V	P	R?4V	P	R4V	P	R@4V	P	R4V	P	RA4V	P	RB4V	P	RC4V	P	RD4V	P	RE4V	P	RF4V	P	RG4V	P	RH4V	P	RI4V	P	R4V	P	RJ4V	P	R4V	P	RK4V	P	RB4V	P	RL4V	P	RM4V	P	RN4V	P	RO4V	P	R4V	P	R4V	P	R4V	P	RP4V	P	R4V	P	RQ4V	P	R4V	P	R>4V	P	RR4V	P	RS4V	P	RTVPR"R#4RU24V	P	RV4V	P	RW4V	P	RX4V	P	RY4V	P	RZ4V	P	R[4V	P	R\4V	P	R4V	P	R]4V	P	R^4V	P	R_4V	P	R\4V	P	R4V	P	R`4V	P	Ra4V	P	Rb4V	P	RcVPRR4RU24V	P	RdVPRR4RU24V	P	RW4V	P	RX4V	P	RY4V	P	RZ4V	P	R[4V	P	R\4V	P	R?4V	P	R4V	P	Re4V	P	R4V	P	R>4V	P	Rf4V	P	RTVPR&Rg4RU24V	P	Rh4V	P	Ri4V	P	Rj4V	P	RZ4V	P	R[4V	P	R\4V	P	R4V	P	Rk4V	P	Rl4V	P	Rm4V	P	R\4V	P	R?4V	P	R4V	P	Rn4V	P	R4V	P	R>4V	P	Ro4V	P	Rp4V	P	Rq4V	P	RX4V	P	Rr4V	P	Rs4V	P	R\4V	P	R4V	P	Rt4V	P	RuVPRR4RU24V	P	Rv4V	P	RwVPRR4Rx24V	P	R\4V	P	R?4V	P	R4V	P	Ry4V	P	R4V	P	R>4V	P	Rz4V	P	R{4V	P	R|4V	P	R\4V	P	R4V	P	R}4V	P	R~4V	P	R4V	P	R�4V	P	R�4V	P	R�4V	P	R�4V	P	R\4V	P	R?4V	P	R4V	P	R4V	P	R4V	P	R�4V	P	R4V	P	R�VPR�R�424V	P	R4VPR�4'd6V	P	R�VPR�R424V	P	R4VPR�4'd6V	P	R�VPR�R424V	P	R4V'd&V	P	R�V24V	P	R4V	P	R�4V	P	R4V	P	R�VPR�R424V	P	R4VPR�4'd%V	P	R�VPR�R424VPR�4'd%V	P	R�VPR�R424V	P	R�VPR�R424V	P	R4V	P	R4V	P	R4V	P	R�4V	P	R4V'dUVPR�4U
+u.uFq�P4NK	pp
+VF!pV'gKV	P	R�V24K#	V	P	R4V	P	R�4V	P	R4V	P	R�4V	P	R�4V	P	R�4V	P	R�4V	P	R�4V	P	R�4V	P	R4V	P	R4V	P	R4V	P	R�4V	P	R4V	P	R�4V	P	R4V	P	R�4V	P	R�4V	P	R�4V	P	R�4V	P	R�4V	P	R�4V	P	R�4V	P	R�4V	P	R�4V	P	R�4V	P	R4R�PV	4#uup
+i)�zCFormat design system as MASTER.md with hierarchical override logic.r�r�rZrr�rrarBrb�%Y-%m-%d %H:%M:%Sz# Design System Master Filez]> **LOGIC:** When building a specific page, first check `design-system/pages/[page-name].md`.z?> If that file exists, its rules **override** this Master file.z*> If not, strictly follow the rules below.�---z**Project:** z**Generated:** z**Category:** r>r�z## Global Rulesz### Color Palettez| Role | Hex | CSS Variable |z|------|-----|--------------|z| Primary | `r�r�z` | `--color-primary` |z| Secondary | `r�r�z` | `--color-secondary` |z| CTA/Accent | `r�r�z` | `--color-cta` |z| Background | `r�r�z` | `--color-background` |z
+| Text | `r�r�z` | `--color-text` |r�z**Color Notes:** r�z- **Heading Font:** r�r�z- **Body Font:** r�r�r�r�z- **Google Fonts:** [rz](�)r�z**CSS Import:**r�r�z### Spacing Variablesz| Token | Value | Usage |z|-------|-------|-------|z1| `--space-xs` | `4px` / `0.25rem` | Tight gaps |z?| `--space-sm` | `8px` / `0.5rem` | Icon gaps, inline spacing |z5| `--space-md` | `16px` / `1rem` | Standard padding |z6| `--space-lg` | `24px` / `1.5rem` | Section padding |z/| `--space-xl` | `32px` / `2rem` | Large gaps |z5| `--space-2xl` | `48px` / `3rem` | Section margins |z2| `--space-3xl` | `64px` / `4rem` | Hero padding |z### Shadow Depthsz| Level | Value | Usage |z>| `--shadow-sm` | `0 1px 2px rgba(0,0,0,0.05)` | Subtle lift |z@| `--shadow-md` | `0 4px 6px rgba(0,0,0,0.1)` | Cards, buttons |zE| `--shadow-lg` | `0 10px 15px rgba(0,0,0,0.1)` | Modals, dropdowns |zP| `--shadow-xl` | `0 20px 25px rgba(0,0,0,0.15)` | Hero images, featured cards |z## Component Specsz### Buttonsz/* Primary Button */z.btn-primary {z  background: �;z  color: white;z  padding: 12px 24px;z  border-radius: 8px;z  font-weight: 600;z  transition: all 200ms ease;z  cursor: pointer;�}z.btn-primary:hover {z  opacity: 0.9;z  transform: translateY(-1px);z/* Secondary Button */z.btn-secondary {z  background: transparent;z	  color: z  border: 2px solid z	### Cardsz.card {z#FFFFFFz  border-radius: 12px;z  padding: 24px;z  box-shadow: var(--shadow-md);z.card:hover {z  box-shadow: var(--shadow-lg);z  transform: translateY(-2px);z
+### Inputsz.input {z  padding: 12px 16px;z  border: 1px solid #E2E8F0;z  font-size: 16px;z&  transition: border-color 200ms ease;z.input:focus {z  border-color: z  outline: none;z  box-shadow: 0 0 0 3px z20;z
+### Modalsz.modal-overlay {z!  background: rgba(0, 0, 0, 0.5);z  backdrop-filter: blur(4px);z.modal {z  background: white;z  border-radius: 16px;z  padding: 32px;z  box-shadow: var(--shadow-xl);z  max-width: 500px;z  width: 90%;z## Style Guidelinesz**Style:** r�r\rTz**Keywords:** r�z**Best For:** z**Key Effects:** z### Page Patternz**Pattern Name:** r�z- **Conversion Strategy:** r�r�z- **Section Order:** r�z## Anti-Patterns (Do NOT Use)riu- ❌ z!### Additional Forbidden PatternsuM- ❌ **Emojis as icons** — Use SVG icons (Heroicons, Lucide, Simple Icons)uT- ❌ **Missing cursor:pointer** — All clickable elements must have cursor:pointeruM- ❌ **Layout-shifting hovers** — Avoid scale transforms that shift layoutuE- ❌ **Low contrast text** — Maintain 4.5:1 minimum contrast ratiouF- ❌ **Instant state changes** — Always use transitions (150-300ms)uJ- ❌ **Invisible focus states** — Focus states must be visible for a11yz## Pre-Delivery Checklistz&Before delivering any UI code, verify:z/- [ ] No emojis used as icons (use SVG instead)z;- [ ] All icons from consistent icon set (Heroicons/Lucide)z0- [ ] `cursor-pointer` on all clickable elementsrrz2- [ ] Focus states visible for keyboard navigationz(- [ ] `prefers-reduced-motion` respectedrz,- [ ] No content hidden behind fixed navbarsz$- [ ] No horizontal scroll on mobiler�)rNr�now�strftimer�rPrrr5)r�r�rZrr�rr�rb�	timestampr��a�	anti_list�antis&            rrrs�������	�:�G����	�2�.�G����g�r�*�E����x��,�F��"�"�<��4�J�����r�2�G�!�%�%�o�r�:�M�����'�'�(;�<�I��E�
+�L�L�.�/�	�L�L���	�L�L�p�q�	�L�L�R�S�	�L�L�=�>�	�L�L���	�L�L���	�L�L���	�L�L�=��	�*�+�	�L�L�?�9�+�.�/�	�L�L�>�-�"3�"3�J�	�"J�!K�L�M�	�L�L���	�L�L���	�L�L���
+�L�L�"�#�	�L�L���
+�L�L�$�%�	�L�L���	�L�L�0�1�	�L�L�0�1�	�L�L�=����I�y�!A� B�BY�Z�[�	�L�L�?�6�:�:�k�9�#E�"F�F_�`�a�	�L�L�#�F�J�J�u�i�$@�#A�AT�U�V�	�L�L�#�F�J�J�|�Y�$G�#H�Hb�c�d�	�L�L�:�f�j�j���;�<�<P�Q�R�	�L�L����z�z�'������(����G�R�)@�(A�B�C����R��
+�L�L�!�"�	�L�L���	�L�L�'�
+���y�'�(J�'K�L�M�	�L�L�$�Z�^�^�F�G�%D�$E�F�G��~�~�f������|�J�N�N�6�2�$>�#?�@�A��~�~�(�)�)����,�Z�^�^�I�r�-J�,K�3�z�~�~�^d�fh�Oi�Nj�jl�mw�m{�m{�}O�QS�nT�mU�UV�W�	X�	�L�L����~�~�l�#�#����&�'����X�����Z�^�^�L�"�5�6����U�����R��
+�L�L�(�)�	�L�L���	�L�L�,�-�	�L�L�,�-�	�L�L�D�E�	�L�L�R�S�	�L�L�H�I�	�L�L�I�J�	�L�L�B�C�	�L�L�H�I�	�L�L�E�F�	�L�L���
+�L�L�$�%�	�L�L���	�L�L�,�-�	�L�L�,�-�	�L�L�Q�R�	�L�L�S�T�	�L�L�X�Y�	�L�L�c�d�	�L�L���
+�L�L���	�L�L���	�L�L�%�&�	�L�L���
+�L�L���	�L�L���	�L�L���	�L�L�'�(�	�L�L�!�"�	�L�L�>�&�*�*�U�I�">�!?�q�A�B�	�L�L�"�#�	�L�L�(�)�	�L�L�(�)�	�L�L�&�'�	�L�L�0�1�	�L�L�%�&�	�L�L���	�L�L���	�L�L�'�(�	�L�L�"�#�	�L�L�1�2�	�L�L���	�L�L���	�L�L�)�*�	�L�L�#�$�	�L�L�-�/�	�L�L�9�V�Z�Z�	�9�=�>�a�@�A�	�L�L�'��
+�
+�9�i�(H�'I��K�L�	�L�L�(�)�	�L�L�(�)�	�L�L�&�'�	�L�L�0�1�	�L�L�%�&�	�L�L���	�L�L���	�L�L���
+�L�L���	�L�L���	�L�L���	�L�L���	�L�L�>�&�*�*�\�9�"E�!F�a�H�I�	�L�L�)�*�	�L�L�#�$�	�L�L�2�3�	�L�L�0�1�	�L�L�%�&�	�L�L���	�L�L���	�L�L��!�	�L�L�2�3�	�L�L�1�2�	�L�L���	�L�L���	�L�L���
+�L�L���	�L�L���	�L�L���	�L�L���	�L�L�(�)�	�L�L�/�0�	�L�L�(�)�	�L�L�%�&�	�L�L�9�:�	�L�L���	�L�L���	�L�L�!�"�	�L�L�#�F�J�J�y�)�$D�#E�Q�G�H�	�L�L�#�$�	�L�L�+�F�J�J�y�)�,L�+M�S�Q�R�	�L�L���	�L�L���	�L�L���
+�L�L���	�L�L���	�L�L���	�L�L�#�$�	�L�L�4�5�	�L�L�0�1�	�L�L���	�L�L���	�L�L���	�L�L�'�(�	�L�L�)�*�	�L�L�#�$�	�L�L�2�3�	�L�L�&�'�	�L�L��!�	�L�L���	�L�L���	�L�L���
+�L�L���	�L�L���	�L�L�&�'�	�L�L���	�L�L�;�u�y�y���>�?�@�A�	�L�L����y�y�������~�e�i�i�
+�B�&?�%@�A�B����R���y�y�������~�e�i�i�
+�B�&?�%@�A�B����R������(��	�2�3����R��
+�L�L�#�$�	�L�L���	�L�L�%�g�k�k�&�"�&=�%>�?�@�	�L�L����{�{�<� � ����2�7�;�;�|�R�3P�2Q�R�S��{�{�?�#�#����,�W�[�[��"�-M�,N�O�P�	�L�L�(����Z��)D�(E�F�G�	�L�L���
+�L�L���	�L�L���	�L�L�0�1�	�L�L����(5�(;�(;�C�(@�A�(@�1�W�W�Y�(@�	�A��D��t����v�d�V�_�-��
+�L�L���	�L�L�4�5�	�L�L���	�L�L�`�a�	�L�L�g�h�	�L�L�`�a�	�L�L�X�Y�	�L�L�Y�Z�	�L�L�]�^�	�L�L���
+�L�L���	�L�L���	�L�L�,�-�	�L�L���	�L�L�9�:�	�L�L���	�L�L�B�C�	�L�L�N�O�	�L�L�C�D�	�L�L�I�J�	�L�L�@�A�	�L�L�E�F�	�L�L�;�<�	�L�L�A�B�	�L�L�?�@�	�L�L�7�8�	�L�L����9�9�U����EBs�2AEc�H�V^8�dQhR\R\R\R\/#)rr��	page_namerrr�)rs"rrr%s/��j�j�4�j�C�j�S�j�\_�jrc��
+�VPRR4p\P!4PR4pVP	RR4P	RR4P4p\WV4p.pVPRVR24VPR	4VPR
+V24VPRV24VPRVPRR424VPR	4VPR4VPR4VPR	4VPR4VPR	4VPR4VPR	4VPR4VPR	4VPR/4pV'd2VP4Fwr�VPRV	RV
+24K	MVPR4VPR	4VPR4VPR	4VPR/4pV'd2VP4Fwr�VPRV	RV
+24K	MVPR4VPR	4VPR4VPR	4VPR/4pV'd2VP4Fwr�VPRV	RV
+24K	MVPR4VPR	4VPR4VPR	4VPR/4pV'd2VP4Fwr�VPRV	RV
+24K	MVPR 4VPR	4VPR!4VPR	4VPR".4pV'dVFpVPR#V24K	MVPR$4VPR	4VPR4VPR	4VPR%4VPR	4VPR&.4pV'dVFpVPR#V24K	MVPR'4VPR	4VPR4VPR	4VPR(4VPR	4VPR).4pV'dVFpVPR#V24K	VPR	4R*PV4#)+zKFormat a page-specific override file with intelligent AI-generated content.r�r�r+rDr2�_z# z Page OverridesrBz> **PROJECT:** z> **Generated:** z> **Page Type:** �	page_typer�ud> ⚠️ **IMPORTANT:** Rules in this file **override** the Master file (`design-system/MASTER.md`).z`> Only deviations from the Master are documented here. For all other rules, refer to the Master.r,z## Page-Specific Rulesz### Layout Overrides�layoutz- **z:** u$- No overrides — use Master layoutz### Spacing Overrides�spacingu%- No overrides — use Master spacingz### Typography Overridesru(- No overrides — use Master typographyz### Color Overridesr�u$- No overrides — use Master colorsz### Component Overrides�
+componentsr�u-- No overrides — use Master component specsz## Page-Specific Components�unique_componentsz$- No unique components for this pagez## Recommendations�recommendationsr�)
+rNrr0r1rO�title�_generate_intelligent_overridesr�r4r5)r�r7rr�r2�
+page_title�page_overridesr�r;r��valuer<rr�r=�compr>r?�recs&&&                rr!r!%sx������	�:�G�����'�'�(;�<�I��"�"�3��,�4�4�S�#�>�D�D�F�J�5�Y�M�Z�N��E�	�L�L�2�j�\��1�2�	�L�L���	�L�L�?�7�)�,�-�	�L�L�$�Y�K�0�1�	�L�L�$�^�%7�%7��Y�%O�$P�Q�R�	�L�L���	�L�L�w�x�	�L�L�s�t�	�L�L���	�L�L���	�L�L���
+�L�L�)�*�	�L�L���
+�L�L�'�(�	�L�L�������"�-�F�� �,�,�.�J�C��L�L�4��u�D���0�1�)�	���;�<�	�L�L���
+�L�L�(�)�	�L�L���� � ��B�/�G��!�-�-�/�J�C��L�L�4��u�D���0�1�*�	���<�=�	�L�L���
+�L�L�+�,�	�L�L����#�#�L�"�5�J��$�*�*�,�J�C��L�L�4��u�D���0�1�-�	���?�@�	�L�L���
+�L�L�&�'�	�L�L�������"�-�F�� �,�,�.�J�C��L�L�4��u�D���0�1�)�	���;�<�	�L�L���
+�L�L�*�+�	�L�L����#�#�L�"�5�J���D��L�L�2�d�V��%��	���D�E�	�L�L���
+�L�L���	�L�L���	�L�L�.�/�	�L�L���&�*�*�+>��C���%�D��L�L�2�d�V��%�&�	���;�<�	�L�L���
+�L�L���	�L�L���	�L�L�%�&�	�L�L���$�(�(�):�B�?�O��"�C��L�L�2�c�U��$�#�	�L�L����9�9�U��rc�H�V^8�dQhR\R\R\R\/#)rr7rr�rr?)rs"rrr�s0��g�g�s�g��g�TX�g�]a�grc��a!�^RIHpVP4pT;'gRP4pVRV2pV!VR^R7pV!VR^R7pV!VR^R7p	VPR.4p
+VPR.4pV	PR.4p\	Wj4p/p/p/p/p.p.p.pV
+'EdV
+^,pVPR	R4pVPR
+R4o!VPRR4pVPRR4p\
+;QJdV!3RlR54F'gKRM	RM!V!3RlR544'dRVR&RVR&RVR&MZ\
+;QJdV!3RlR64F'gKRM	RM!V!3RlR644'dRVR&RVR&RVR&M
+RVR&RVR&V'dVPRV24VFupVPRR4pVPRR4pVPR R4pV'dVPVR!V24V'gKaVPR"V24Kw	V'dvV^,pVPR#R4pVPR$R4pVPR%R4p V'dVVR&&V'dVPR'V24V 'dV VR(&V'gR)VR&R*VR&V'gR+R,.pR-VR.VR/VR0VR1VR2VR3VR4V/#)7z�
+Generate intelligent overrides based on page type using layered search.
+
+Uses the existing search infrastructure to find relevant style, UX, and layout
+data instead of hardcoded page types.
+)rrBr2r)r�uxr
+r6ryrzr�r�c3�H<"�TFqSP49x�K	R#5ir�rM�rGrHrTs& �rrJ�2_generate_intelligent_overrides.<locals>.<genexpr>�s����W�0V�"�X�^�^�%�%�0V���"TFz1400px or full-widthz	Max Widthz#12-column grid for data flexibility�Gridu)High — optimize for information displayzContent Densityc3�H<"�TFqSP49x�K	R#5irrKrLs& �rrJrM�s����[�2Z�B�x�~�~�'�'�2Z�rNz800px (narrow, focused)zSingle column, centered�LayoutuLow — focus on clarityz1200px (standard)z%Full-width sections, centered contentz	Effects: �Category�DozDon'tz: zAvoid: r�r�r��SectionszCTA Placement: �Strategy�1200pxzResponsive gridz'Refer to MASTER.md for all design rulesz.Add specific overrides as needed for this pager:r;r<rr�r=r>r?)�data�dense�	dashboard�grid)�minimal�simple�clean�single)�corerrMrN�_detect_page_typerQr�)"r7rr�r�
+page_lower�query_lower�combined_context�style_search�	ux_search�landing_searchr��
+ux_resultsr�r:r;r<rr�r=r>r?rr�r�r�rIr>�do_text�	dont_textr
+r�r�r�rTs"&&&                              @rrArA�s�������"�J��#�#��*�*�,�K�$��Q�{�m�4���*�G��C�L��'��1�=�I��,�i�Q�G�N�!�$�$�Y��3�M����y�"�-�J�$�(�(��B�7�O�"�"2�B�I��F��G��J��F��J����O��}��a� ���Y�Y�/��4�
+��9�9�Z��,���9�9�Z��,���)�)�1�2�6���3�W�0V�W�3�3�3�W�0V�W�W�W�"8�F�;��B�F�6�N�)T�G�%�&��S�[�2Z�[�S�S�S�[�2Z�[�[�[�";�F�;��8�F�8��)C�G�%�&�"5�F�;��F�F�8����"�"�Y�w�i�#8�9����6�6�*�b�)���&�&��r�"���F�F�7�B�'�	���"�"�h�Z�r�'��#;�<��9�����	�{�3�4���!�!�$���;�;���3�����$;�R�@�� ���%5�r�:���!)�F�:����"�"�_�]�O�#D�E��!/�F�:���&��{��,��x���5�<�
+��	�Y��&��7��j��&��j��.��?�	�	rc�<�V^8�dQhR\R\R\/#)r�contextr�r)r/r)rs"rrr�s!�� � �s� �4� �C� rc�a�VP4o.ROR3.ROR3.ROR3.ROR3.ROR	3.ROR
+3.ROR3.ROR3.ROR3.ROR3.
+pVFIwr4\;QJdV3RlV4F'gKRM	RM!V3RlV44'gKGVu#	V'doV^,PRR4P4pV^,PRR4P4pRV9gRV9dR#RV9gRV9dR#R#) z1Detect page type from context and search results.rYrWzDashboard / Data ViewzCheckout / PaymentzSettings / Profiler
+�	marketingzLanding / Marketing�AuthenticationzPricing / PlanszBlog / ArticlezProduct DetailzSearch ResultszEmpty Statec3�,<"�TF	qS9x�K	R#5irrF)rGrH�context_lowers& �rrJ�$_detect_page_type.<locals>.<genexpr>s����6�X�r�]�"�X�rLTFryrBr�r�)rY�admin�	analyticsrW�metrics�stats�monitor�overview)�checkout�payment�cart�purchase�order�billing)�settings�profile�account�preferencesr8)r
+rm�homepage�hero�home�promo)�login�signin�signup�register�auth�password)�pricing�plans�subscription�tiers�packages)�blog�article�post�news�content�story)rr��detail�pdp�shop�store)rr6�browse�filter�catalogr)�empty�404�errorz	not found�zero)rMrQrN)rkr��page_patternsrTr:r�r�rps&&     @rr`r`�s����M�M�O�M�
+`�ax�y�	H�J^�_�	D�FZ�[�	F�H]�^�	F�HX�Y�	B�DU�V�	@�BR�S�	>�@P�Q�	E�GW�X�	7��G��M� -����3�6�X�6�3�3�3�6�X�6�6�6��� -�
+�"�1�%�)�)�*:�B�?�E�E�G�
+� ��#�'�'�
+�B�7�=�=�?���(�"�f��&8�*��(�"�k�X�&=�(�r�__main__zGenerate Design System)�descriptionr-z%Search query (e.g., 'SaaS dashboard'))�helpz--project-namez-pzProject name)r�rr�z--formatz-frzOutput format)�choicesrr�)NrFNN)NNNr)#r�r'ro�osr�pathlibrr_rrr$r3rr�r�rrrrr!rAr`r��argparse�ArgumentParser�parser�add_argumentr/�
+parse_args�argsr-r�rr��printrFrr�<module>r�sJ�����	���!�$����q�!��m�Q���m�Q����q�!��=�!�$���G
+�G
+�V�	�z�z[�~+�:0�fD�Nj�Zg�T �H�z����$�$�1I�J�F�
+����&M��N�
+���(�$�S�$�^��\�
+���
+�D�7�J�2G�QX�_n��o�����D�#�D�J�J��0A�0A�4�;�;�O�F�	�&�M�r
