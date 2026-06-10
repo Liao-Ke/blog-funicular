@@ -1,0 +1,78 @@
++
+�<ri�'��h�Rt^RIt^RIt^RIHt^RIHt^RIHt]!]	4PPR,t^tRRRR	.R?OR
+.R@O/RRRR	RR.R
+.RAO/RRRR	.RBOR
+.RCO/RRRR	.RDOR
+.REO/RRRR	.RFOR
+.RGO/RRRR	.RHOR
+.RIO/RRRR	.RJOR
+.RKO/RRRR	.RLOR
+.RMO/RRRR	.RNOR
+.RIO/RRRR	.RNOR
+.RIO//
+tRRR /RRR!/R"RR#/R$RR%/R&RR'/R(RR)/R*RR+/R,RR-/R.RR//R0RR1/R2RR3/R4RR5/R6RR7//tR	.ROOR
+.RPO/t]!]P#44t!R8R94tR:tR;tR<tR]3R=lt]3R>ltR#)Qz@
+UI/UX Pro Max Core - BM25 search engine for UI/UX style guides
+N)�Path)�log)�defaultdict�data�style�filez
+styles.csv�search_cols�output_cols�colorz
+colors.csv�Product Type�Notes�chartz
+charts.csv�landingzlanding.csv�productzproducts.csv�uxzux-guidelines.csv�
+typographyztypography.csv�iconsz	icons.csv�reactzreact-performance.csv�webzweb-interface.csvzhtml-tailwindzstacks/html-tailwind.csvzstacks/react.csv�nextjszstacks/nextjs.csv�astrozstacks/astro.csv�vuezstacks/vue.csv�nuxtjszstacks/nuxtjs.csvznuxt-uizstacks/nuxt-ui.csv�sveltezstacks/svelte.csv�swiftuizstacks/swiftui.csvzreact-nativezstacks/react-native.csv�flutterzstacks/flutter.csv�shadcnzstacks/shadcn.csvzjetpack-composezstacks/jetpack-compose.csvc�@a�]tRt^`toRtRRltRtRtRtRt	Vt
+R#)	�BM25z&BM25 ranking algorithm for text searchc���WnW n.Vn.Vn^Vn/Vn\\4Vn^Vn	R#)�N)
+�k1�b�corpus�doc_lengths�avgdl�idfr�int�	doc_freqs�N)�selfr!r"s&&&�j/Users/viettranx/Documents/coding/next-level-builder/ui-ux-pro-max-skill/src/ui-ux-pro-max/scripts/core.py�__init__�BM25.__init__cs<��������������
+����$�S�)������c���\P!RR\V4P44pVP	4Uu.uFp\V4^8�gKVNK	up#uupi)z8Lowercase, split, remove punctuation, filter short wordsz[^\w\s]� )�re�sub�str�lower�split�len)r*�text�ws&& r+�tokenize�BM25.tokenizemsI���v�v�j�#�s�4�y���'8�9���:�:�<�6�<�a�3�q�6�A�:���<�6�6��6s�A"�A"c���VUu.uFq PV4NK	upVn\VP4VnVP^8XdR#VPUu.uFp\V4NK	upVn\VP4VP,VnVPFNp\4pVF;pWC9gKVPV;;,^,uu&VPV4K=	KP	VPP4FJwrE\VPV,
+R,VR,,^,4VPV&KL	R#uupiuupi)zBuild BM25 index from documentsNg�?)r9r#r6r)r$�sumr%�setr(�add�itemsrr&)r*�	documents�doc�seen�word�freqs&&    r+�fit�BM25.fitrs��5>�?�Y�c�}�}�S�)�Y�?����T�[�[�!����6�6�Q�;��04���<���C��H��<�����)�)�*�T�V�V�3��
+��;�;�C��5�D����#��N�N�4�(�A�-�(��H�H�T�N����.�.�.�.�0�J�D� �$�&�&�4�-�#�"5�$��*�!E��!I�J�D�H�H�T�N�1��@��=s�E0�!E5c���VPV4p.p\VP4EFwrE^pVPV,p\	\
+4pVFp	W�;;,^,uu&K	VF�p
+W�P9gKW�,pVPV
+,pW�P^,,pW�P^VP,
+VPV,VP,,,,pWlV,V,,pK�	VPWF34EK	\VRRR7#)z!Score all documents against queryc��V^,#)��)�xs&r+�<lambda>�BM25.score.<locals>.<lambda>�s��A�a�Dr.T)�key�reverse)r9�	enumerater#r$rr'r&r!r"r%�append�sorted)r*�query�query_tokens�scores�idxrA�score�doc_len�
+term_freqsrC�token�tfr&�	numerator�denominators&&             r+rW�
+BM25.score�s���}�}�U�+����!�$�+�+�.�H�C��E��&�&�s�+�G�$�S�)�J���� �A�%� ��&���H�H�$�#�*�B��(�(�5�/�C� "�g�g��k� 2�I�"$�w�w�!�d�f�f�*�t�v�v��?O�RV�R\�R\�?\�2\�']�"]�K��9�_�{�:�:�E�&��M�M�3�,�'�/�"�f�.�$�?�?r.)r)r%r"r#r(r$r&r!N)g�?g�?)�__name__�
+__module__�__qualname__�__firstlineno__�__doc__r,r9rErW�__static_attributes__�__classdictcell__)�__classdict__s@r+rr`s$����0��7�
+K�&@�@r.rc���\VRRR7;_uu_4p\\P!V44uuRRR4# +'giR#;i)z!Load CSV and return list of dicts�rzutf-8)�encodingN)�open�list�csv�
+DictReader)�filepath�fs& r+�	_load_csvrp�s3��	�h��g�	.�	.�!��C�N�N�1�%�&�
+/�	.�	.�	.�s�A�A	c��a�VP4'g.#\V4pVUau.uFoRPV3RlV44NK 	pp\4pVP	V4VPV4p	.p
+V	RVFPwr�V^8�gKW[,oT
+PVUu/uFq�S9gKVSPVR4bK 	up4KR	V
+#uupiuupi)zCore search function using BM25r0c3�Z<"�TF p\SPVR44x�K"	R#5i)�N)r3�get)�.0�col�rows& �r+�	<genexpr>�_search_csv.<locals>.<genexpr>�s$����G�;�C�#�c�g�g�c�2�.�/�/�;�s�(+Nrs)�existsrp�joinrrErWrQrt)rnrr	rS�max_resultsrrwr@�bm25�ranked�resultsrVrWrvs&&&&& `       r+�_search_csvr��s�����?�?����	��X��D�TX�X�SW�C����G�;�G�G�SW�I�X��6�D��H�H�Y���Z�Z���F��G��\�k�*�
+���1�9��)�C��N�N�[�W�[�c�SV�J�1�C�����b�!1�1�[�W�X�+�
+�N��Y��Xs�$C�(C
+�5C
+c�@a�VP4oR.ROR.ROR.ROR.ROR.ROR.ROR.ROR.ROR	.ROR
+.RO/
+pVP4UUu/uFwr#V\V3RlV44bK	ppp\WDPR7pWE,^8�dV#R#uuppi)z/Auto-detect the most relevant domain from queryr
+rrrrrrrrrc3�8<"�TFqS9gK^x�K	R#5i)rINrJ)ru�kw�query_lowers& �r+rx� detect_domain.<locals>.<genexpr>�s����D�h���2C�!�!�h�s��
+)rN)r
+�palette�hex�#�rgb)	r�graph�visualization�trend�bar�pie�scatter�heatmap�funnel)r�page�cta�
+conversion�hero�testimonial�pricing�section)	�saas�	ecommercez
+e-commerce�fintech�
+healthcare�gaming�	portfolio�crypto�	dashboard)r�design�ui�
+minimalism�glassmorphism�neumorphism�	brutalismz	dark mode�flat�aurora�prompt�css�implementation�variable�	checklist�tailwind)
+r�	usability�accessibility�wcag�touch�scroll�	animation�keyboard�
+navigation�mobile)�fontr�heading�serif�sans)�iconr�lucide�	heroicons�symbol�glyph�	pictogramzsvg icon)rznext.jsr�suspense�memo�usecallback�	useeffect�rerender�bundle�	waterfall�barrelzdynamic import�rsczserver component)	�aria�focus�outline�semantic�
+virtualize�autocomplete�formz
+input type�
+preconnect)r4r?r<�maxrt)rS�domain_keywords�domain�keywordsrU�bestr�s&     @r+�detect_domainr��s�����+�+�-�K�	�8��k��h��}��M��~��H��e��z��y��O�^m�]r�]r�]t�u�]t�IY��f�c�D�h�D�D�D�]t�F�u��v�:�:�&�D��<�!�#�4�0��0��vs�!Bc
+�6�Vf\V4p\PV\R,4p\VR,,pVP	4'g
+RRV2RV/#\WCR,VR,W4pRVRVRVR,R	\V4R
+V/#)z/Main search function with auto-domain detectionrr�errorzFile not found: r�rr	rS�countr)r��
+CSV_CONFIGrt�DATA_DIRrzr�r6)rSr�r|�configrnrs&&&   r+�searchr��s����~��u�%���^�^�F�J�w�$7�8�F��&��.�(�H��?�?����+�H�:�6��&�I�I��(�=�$9�6�-�;P�RW�e�G�	�&�����v����W���7��r.c�h�V\9dRRVRRP\42/#\\V,R,,pVP	4'g
+RRV2RV/#\V\R,\R	,W4pR
+RRVRVR\V,R,R\V4RV/#)z Search stack-specific guidelinesr�zUnknown stack: z. Available: z, rzStack file not found: �stackrr	r�rSr�r)�STACK_CONFIGr{�AVAILABLE_STACKSr�rzr��_STACK_COLSr6)rSr�r|rnrs&&&  r+�search_stackr��s����L� ��?�5�'��t�y�y�IY�?Z�>[�\�]�]��,�u�-�f�5�5�H��?�?����1�(��<�g�u�M�M��(�K��$>��M�@Z�\a�o�G�	�'�������U�#�F�+���W���7��r.)�Style Category�Keywords�Best For�Type�AI Prompt Keywords)r�r�r�zPrimary ColorszEffects & Animationr��Performance�AccessibilityzFramework Compatibility�
+Complexityr�zCSS/Technical KeywordszImplementation ChecklistzDesign System Variables)rzPrimary (Hex)zSecondary (Hex)z	CTA (Hex)zBackground (Hex)z
+Text (Hex)r)�	Data Typer��Best Chart Type�Accessibility Notes)r�r�r�zSecondary OptionszColor Guidancer�zLibrary RecommendationzInteractive Level)�Pattern Namer��Conversion Optimization�Section Order)r�r�r�zPrimary CTA PlacementzColor Strategyr�)rr��Primary Style RecommendationzKey Considerations)rr�r�zSecondary StyleszLanding Page PatternzDashboard Style (if applicable)zColor Palette Focus)�Category�Issue�Description�Platform)	r�r�r�r��Do�Don'tzCode Example GoodzCode Example Bad�Severity)�Font Pairing Namer��Mood/Style Keywordsr��Heading Font�	Body Font)
+r�r�r�r�r�r�zGoogle Fonts URLz
+CSS ImportzTailwind Configr)r��	Icon Namer�r�)r�rr��LibraryzImport Code�Usager��Style)r�r�r�r�)r��	Guideliner�r�r�)	r�rr�r�r�z	Code GoodzCode Badr�zDocs URL)rcrlr1�pathlibr�mathr�collectionsr�__file__�parentr��MAX_RESULTSr�r�r�rk�keysr�rrpr�r�r�r�rJr.r+�<module>rsk����	���#���>� � �'�'�&�0��������_��c��
+������0��D��
+����Z��q��
+����_��K��
+����i��z��
+	��#��G��L��
+�� ��x��w��
+����H��t��
+��'��G��L��
+
+��#��G��L��]3�
+�l�f�8�9��f�(�)��v�*�+��f�(�)�	�F�$�%��v�*�+���,�-��v�*�+���,�-��V�6�7���,�-��v�*�+��� <�=���$�J��{���
+��)�)�+�,��;@�;@�~'��21�,�;��,,7�r.

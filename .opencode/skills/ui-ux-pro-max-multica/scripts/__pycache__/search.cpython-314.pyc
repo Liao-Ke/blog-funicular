@@ -1,0 +1,45 @@
++
+P*ri��	���Rt^RIt^RIHtHtHtHtHt^RIH	t	H
+t
+Rt]R8XEdR]P!RR7t]PRR	R
+7]PRR]!]P"!44RR7]PRR]RR7]PRR]]RR7]PRRRR7]PRRRRR7]PRR]RRR7]PR R!R"R#.R"R$R%7]PR&RR'R7]PR(]RR)R7]PR*R+]RR,R7]P)4t]P'Ed6]	!]P,]P.]P0]P2]P4]P6R-7t]!]4]P2'd�]P.'d+]P.P=4P?R.R/4MR0t ]!R>4]!R1] R224]!R3] R424]P4'd:]P4P=4P?R.R/4t!]!R3] R5]!R624]!R74]!R8] R924]!R:4]!R=4R#R#]PD'dl]!]P,]PD]PF4t]PH'd"^RI$t$]!]$PJ!]^R;R<74R#]!]!]44R#]!]P,]PL]PF4t]PH'd"^RI$t$]!]$PJ!]^R;R<74R#]!]!]44R#R#)?am
+UI/UX Pro Max Search - BM25 search engine for UI/UX style guides
+Usage: python search.py "<query>" [--domain <domain>] [--stack <stack>] [--max-results 3]
+       python search.py "<query>" --design-system [-p "Project Name"]
+       python search.py "<query>" --design-system --persist [-p "Project Name"] [--page "dashboard"]
+
+Domains: style, prompt, color, chart, landing, product, ux, typography
+Stacks: html-tailwind, react, nextjs
+
+Persistence (Master + Overrides pattern):
+  --persist    Save design system to design-system/MASTER.md
+  --page       Also create a page-specific override file in design-system/pages/
+N)�
+CSV_CONFIG�AVAILABLE_STACKS�MAX_RESULTS�search�search_stack)�generate_design_system�persist_design_systemc���RV9dRVR,2#.pVPR4'd8VPR4VPRVR,RVR,24M6VPR4VPR	VR
+,RVR,24VPRVR,RVR,R24\VR,^4F�wr#VPRV24VP4FGwrE\	V4p\V4R8�dVR,R,pVPRVRV24KI	VPR4K�	RPV4#)z7Format results for Claude consumption (token-optimized)�errorzError: �stackz## UI Pro Max Stack Guidelinesz**Stack:** z | **Query:** �queryz## UI Pro Max Search Resultsz**Domain:** �domainz**Source:** �filez | **Found:** �countz	 results
+�resultsz### Result i,:Ni,Nz...z- **z:** ��
+)�get�append�	enumerate�items�str�len�join)�result�output�i�row�key�value�	value_strs&      �#src/ui-ux-pro-max/scripts/search.py�format_outputr"sN���&������)�*�*��F��z�z�'������6�8�����F�7�O�#4�N�6�'�?�BS�T�U����4�6�����V�H�%5�$6�n�V�G�_�DU�V�W�
+�M�M�L���� 0��v�g��>O�z�Z�[��F�9�-�q�1�������A�3�'�(��)�)�+�J�C��E�
+�I��9�~��#�%�d�O�e�3�	��M�M�D���T�)��5�6�	&�
+	���b��2��9�9�V����__main__zUI Pro Max Search)�descriptionrzSearch query)�helpz--domainz-dzSearch domain)�choicesr&z--stackz-sz4Stack-specific search (html-tailwind, react, nextjs)z--max-resultsz-nzMax results (default: 3))�type�defaultr&z--json�
+store_truezOutput as JSON)�actionr&z--design-systemz-dsz.Generate complete design system recommendationz--project-namez-pz%Project name for design system outputz--formatz-f�ascii�markdownzOutput format for design system)r'r)r&z	--persistzNSave design system to design-system/MASTER.md (creates hierarchical structure)z--pagez:Create page-specific override file in design-system/pages/z--output-dirz-ozAOutput directory for persisted files (default: current directory))�persist�page�
+output_dir� �-r)u-✅ Design system persisted to design-system/�/u   📄 design-system/z#/MASTER.md (Global Source of Truth)z/pages/z.md (Page Overrides)ru6📖 Usage: When building a page, check design-system/z/pages/[page].md first.zE   If exists, its rules override MASTER.md. Otherwise, use MASTER.md.F)�indent�ensure_asciiz<============================================================z=
+============================================================)'�__doc__�argparse�corerrrrr�design_systemrrr"�__name__�ArgumentParser�parser�add_argument�list�keys�intr�
+parse_args�argsr�project_name�formatr.r/r0r�print�lower�replace�project_slug�page_filenamer�max_results�json�dumpsr�r#r!�<module>rNs@����P�P�G��4�z���$�$�1D�E�F�
+����n��5�
+���
+�D�$�z���7H�2I�P_��`�
+���	�4�1A�H~���
+�����C��Sm��n�
+�����<L��M�
+���)�5��L|��}�
+���(�$�S�$�Mt��u�
+���
+�D�7�J�2G�QX�`A��B�
+����L�@P��Q�
+����s�D�?{��|�
+�����3��LO��P�����D�����'��J�J�����K�K��L�L�������
+��	�f���<�<�<�JN�J[�J[�J[�4�,�,�2�2�4�<�<�S�#�F�aj�L��/�"��A�,��q�Q�R��*�<�.�8[�\�]��y�y�y� $�	�	��� 1� 9� 9�#�s� C���.�|�n�G�M�?�Rf�g�h��"�I��J�<�.�Xo�p�q��Y�[��(�O��
+�����d�j�j�$�*�*�d�6F�6F�G���9�9�9���$�*�*�V�A�E�B�C��-��'�(���
+�
+�D�K�K��1A�1A�B���9�9�9���$�*�*�V�A�E�B�C��-��'�(�ur#
