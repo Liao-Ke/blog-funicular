@@ -57,6 +57,14 @@
 
 修复：移除 `markdown.css` 中的 `link` 引用，`@apply` 中的 `link` 不是 Tailwind 的实用工具类，不应出现在该语境中。`.link` 类定义保留在 `main.css` 中以供 HTML 元素直接使用。
 
+### 后续更新（2026-06-10）
+
+新增两个 Dependabot PR，已通过 `gh` CLI 合并：
+- **PR #11**: @biomejs/biome 2.4.10 → 2.4.16（patch）
+- **PR #13**: minor-updates 组 11 个依赖小版本更新，包括 `expressive-code`、`katex`、`svelte`、`wrangler` 等
+
+PR #13 合并后再次出现自定义类跨文件引用问题（`btn-regular-dark`），已在 `markdown.css` 中将该引用替换为内联 Tailwind 工具类。
+
 ## 验证方式
 
 每个 PR 合并后在本机执行完整验证流程：
