@@ -6,9 +6,12 @@
 
 ## 修改范围
 
-- `src/config.ts`：调整默认主题色相。
+- `src/config.ts`：调整默认主题色相并固定新主题。
 - `tailwind.config.cjs`：扩展正文与标题字体栈。
-- `src/layouts/Layout.astro`：启用全局字体族。
+- `src/layouts/Layout.astro`：启用全局字体族，并在固定主题时忽略旧的本地 hue。
+- `src/utils/setting-utils.ts`：固定主题时始终返回配置 hue，并清理旧的本地 hue。
+- `src/components/Navbar.astro`：移除颜色设置入口，让站点直接应用新主题。
+- `src/components/widget/DisplaySettings.svelte`：删除不再使用的颜色设置组件。
 - `src/styles/variables.styl`：重设主题色、背景色、卡片色、边框、阴影、按钮和文本 token。
 - `src/styles/main.css`：增加全局背景纹理、焦点状态、减少动态效果适配，以及卡片和按钮质感。
 
@@ -17,7 +20,7 @@
 - 使用品红主色、暖橙与青色辅助色，避免全站单一色调。
 - 用细线边框、轻阴影和纸张网格纹理替代原本更重的 MD3 卡片观感。
 - 标题优先使用中文衬线/宋体字体栈，正文保留 Roboto 与常见中文无衬线字体回退。
-- 保留现有色相滑杆，用户仍可调整主色 hue。
+- 固定新主题色相并移除颜色滑杆入口，避免旧访客的 `localStorage.hue` 在首屏或客户端初始化时覆盖新主题。
 - 增加 `prefers-reduced-motion` 处理，降低动效敏感用户的负担。
 
 ## 影响范围
